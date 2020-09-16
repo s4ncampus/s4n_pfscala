@@ -1,4 +1,4 @@
-\documentclass[handout]{beamer}
+\documentclass[rail]{beamer}
 
 \usetheme{default}
 
@@ -6,7 +6,46 @@
 \usepackage[spanish]{babel}
 \usepackage{amssymb,latexsym}
 \usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{alltt}
 \usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{alltt}
+\usepackage[ruled,vlined]{algorithm2e}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
 
 \title{Programación Funcional con Scala\\Sesion 1}
 \date{11 de Septiembre de 2020}
@@ -34,11 +73,9 @@
 \begin{frame}
   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
   \framesubtitle{Introducción}
-  \begin{itemize}[<+->]
+  \begin{itemize}
   \item Lenguajes de programación son herramientas para escribir programas.
   \item Lenguajes de programación permite comunicarnos con el computador.
-  \item Nos enfocaremos en lenguajes de programación de propósito general
-    en vez de lenguajes de dominio especifico.
   \end{itemize}
 \end{frame}
 
@@ -263,7 +300,7 @@
 %   \end{itemize}
 % \end{frame}
 
-\subsection{Origenes históricos }
+\subsection{Origenes históricos}
 
 \begin{frame}
   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
@@ -357,20 +394,20 @@
   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
   \framesubtitle{Conceptos de programación funcional}
 
-  \begin{itemize}[<+->]
-  \item \textbf{Programación funcional:} define la salida de un programa
+  \begin{itemize}
+  \item<1-> \textbf{Programación funcional:} define la salida de un programa
     como una función matemática de las entradas, sin noción de estado
     interno y así sin efectos colaterales.
-  \item Para hacer la programación funcional práctica, los lenguajes
+  \item<2-> Para hacer la programación funcional práctica, los lenguajes
     funcionales suministran un número de características que se
     omiten frecuentemente en los lenguajes imperativos:
     \begin{itemize}
-    \item Valores de funciones de primera clase y funciones de alto-orden.
-    \item Polimorfismo extensivo.
-    \item Tipos de listas y operadores.
-    \item Returnas funciones estructuradas.
-    \item Constructores (agregados) para objetos estructurados.
-    \item Recolectores de basura.
+    \item<3-> Valores de funciones de primera clase y funciones de alto-orden.
+    \item<3-> Polimorfismo extensivo.
+    \item<3-> Tipos de listas y operadores.
+    \item<3-> Returnas funciones estructuradas.
+    \item<3-> Constructores (agregados) para objetos estructurados.
+    \item<3-> Recolectores de basura.
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -504,9 +541,159 @@
 
 \begin{frame}
   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
-  \framesubtitle{¿Qué es una función pura?}
+  \framesubtitle{¿Qué son valores inmutables?}
 
+  \begin{itemize}
+  \item<1-> En los lenguajes imperativos los valores pueden cambiar.
+  \item<2-> En los lenguajes declarativos los valores no pueden cambiar.
+  \item<3-> Los valores se transforma, a partir de un valor se crea un valor nuevo.
+  \end{itemize}
   
+\end{frame}
+
+\subsection{Scala como un lenguaje funcional}
+\label{sec:scala}
+
+\begin{frame}
+  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Scala como un lenguaje funcional}
+
+  \begin{itemize}
+  \item<1-> Scala es un lenguaje de propósito general,
+  \item<2-> que soporta la programación orientada a objetos,
+  \item<3-> que soporta la programación funcional.
+  \item<4-> Con un sistema de tipos fuertemente tipeado.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Scala como un lenguaje funcional}
+
+  \begin{itemize}
+  \item<1-> Vamos a utilizar la parte funcional de Scala.
+  \item<2-> Nos permite un acercamiento más puro a la programación funcional.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Scala como un lenguaje funcional}
+
+  \begin{itemize}
+  \item<1-> En \href{https://sdkman.io/}{sdkman} es una herramienta que permite manejar varios ambientes de desarrollo basados en Java.
+    \begin{enumerate}
+    \item<2-> Instale \href{https://sdkman.io/}{sdkman}
+\begin{alltt}
+\$ curl -s "https://get.sdkman.io" | bash
+\end{alltt}
+    \item<3-> Ahora instale Scala
+\begin{alltt}
+\$ sdk install scala
+\end{alltt}
+\item<4-> Ahora instale sbt
+\begin{alltt}
+\$ sdk install sbt
+\end{alltt}
+   \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+\subsection{Definición de funciones}
+\label{sec:def-funciones}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Definición de funciones}
+   \begin{itemize}
+   \item<1-> Scala nos permite definir valores inmutables \texttt{val}
+% \begin{lstlisting}[language=Haskell]
+% f (x,y) = (x, ['a' .. y])
+% \end{lstlisting}
+\begin{lstlisting}[language=Scala]
+val diez = 10
+\end{lstlisting}
+\item<2-> Scala nos permite definir funciones. Definamos una
+  función que calcule el mínimo de dos valores enteros.
+\begin{lstlisting}[language=Scala]
+def minimo(x:Int, y:Int):Int = if (x<=y) x else y
+\end{lstlisting}
+   \end{itemize}
+ \end{frame}
+
+
+ \begin{frame}
+  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Definición de funciones}
+
+  \begin{exampleblock}{Definición de signo}
+    Defina una función \texttt{signo} que evalue la siguiente definición:
+    \[
+      signo(x) = \begin{cases}
+        x < 0 & -1 \\
+        x = 0 & 0 \\
+        x > 0 & 1 \\
+        \end{cases}
+    \]
+  \end{exampleblock}
+\end{frame}
+
+\subsection{Definición de tipos algebraicos}
+\label{sec:valores-inmutables}
+
+\begin{frame}
+  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Definición de tipos algebraicos}
+
+  \begin{exampleblock}{Definición de sucesor}
+    Los valores númericos se pueden definir de una forma
+    matemática:
+
+    \[
+      Numero = \begin{cases}
+        0 & \\
+        Succ(Numero) &  \\
+        \end{cases}
+    \]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Definición de tipos algebraicos}
+
+  \begin{block}{Definición de un valor algebraico}
+\begin{lstlisting}[language=Scala]
+sealed trait Number
+case object Zero extends Number
+case class Succ(x:Number) extends Number
+\end{lstlisting}    
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Definición de tipos algebraicos}
+
+  \begin{exampleblock}{Definición}
+\begin{lstlisting}[language=Scala]
+def isZero(x:Number):Boolean = x match {
+  case Zero => true
+  case _    => false
+}
+\end{lstlisting}    
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Definición de tipos algebraicos}
+
+  \begin{enumerate}
+  \item Defina una función (\texttt{sum}) se sume dos números.
+  \item Defina una función (\texttt{mult}) que multiplique dos
+    números.
+  \end{enumerate}
   
 \end{frame}
 \end{document}

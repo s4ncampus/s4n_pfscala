@@ -1,0 +1,535 @@
+\documentclass[rail]{beamer}
+
+\usetheme{default}
+
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,latexsym}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{alltt}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{alltt}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{soul}
+\makeatletter
+\let\HL\hl
+\renewcommand\hl{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color
+  \HL}
+\makeatother
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\title{Programación Funcional con Scala\\Sesion 2}
+\date{16 de Septiembre de 2020}
+\author{Juan Cardona}
+\institute{S4N}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage{}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Agenda}\tableofcontents
+\end{frame}
+
+\section{Módulo 2. Funciones puras}
+
+\subsection{Introducción}
+\label{sec:introduccion}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones}
+  \framesubtitle{Introducción}
+  \begin{block}{Objetivos}
+
+    \begin{itemize}
+    \item Definir qué son funciones puras.
+    \item Introducir más elementos de la programación funcional pura.
+      \begin{itemize}
+      \item Tipos de datos
+      \item Tuplas
+      \item Alias
+      \item Coincidencia de patrones
+      \end{itemize}
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\subsection{A modo de repaso}
+\label{sec:a-modo-repaso}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{A modo de repaso}
+
+  \begin{block}{¿Qué es la programación funcional}
+    \begin{quote}
+      La programación funcional es una forma de escribir software utilizando únicamente \hl{funciones puras} y \hl{valores
+      inmutables}.
+    \end{quote}
+  \end{block}
+\end{frame}
+
+\subsection{Definición de funciones puras}
+\label{sec:def-fun-puras}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Definición de funciones puras}
+
+  \begin{quote}
+    Una \hl{función pura} es una función que depende únicamente de sus parámetros de entrada y su algoritmo produce
+    su salida. Este no lee cualquier valor del ``mundo exterior'' y no modifica valor alguno del mundo exterior.
+  \end{quote}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Definición de funciones puras}
+
+  \begin{exampleblock}{Ejemplo de una función impura}
+\begin{lstlisting}[language=C++]
+// En C o C++
+int contador() {
+   static int valor = 0;
+   return valor++;
+}
+\end{lstlisting}
+  \end{exampleblock}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Definición de funciones puras}
+
+  \begin{exampleblock}{Otro ejemplo de una función impura}
+\begin{lstlisting}[language=Java]
+import java.util.Random;
+...
+public class AlgunaClase {
+    ...
+    public void algunMetodo() {
+         Random rand = 
+                new Random(System.currentTimeMillis());
+         ...
+         int valor1 = rand.nextInt();
+         int valor2 = rand.nextInt();  
+    }
+}
+\end{lstlisting}
+  \end{exampleblock}  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Definición de funciones puras}
+
+  \begin{block}{Otras funciones impuras}
+    \begin{itemize}
+    \item<1-> Entrada y salida.
+    \item<2-> Bases de datos.
+    \item<3-> Obtención de la hora.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Definición de funciones puras}
+
+  \begin{center}
+    \includegraphics[width=5cm,height=5cm]{../../imagenes/AplicacionFuncional}
+  \end{center}  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Definición de funciones puras}
+  
+  \begin{block}{Ventajas de la funciones puras}
+
+    \begin{itemize}
+    \item<1-> Son fáciles de razonar sobre ellas
+    \item<2-> Son fáciles de combinar
+    \item<3-> Son fáciles de probar
+    \item<4-> Son fáciles de depurar
+    \item<5-> Son fáciles de paralelizar
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Definición de funciones puras}
+  
+  \begin{block}{Ventajas de la funciones puras - Punto de vista matemático}
+    \begin{itemize}
+    \item<1-> Son idempotentes
+    \item<2-> Ofrecen transparencia referencial
+    \item<3-> Ofrecen técnicas de memorización
+    \item<4-> Son ``perezosas''.
+    \end{itemize}
+  \end{block}  
+\end{frame}
+
+\subsection{Definición de funciones}
+\label{sec:def-funciones}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Definición de funciones}
+   \begin{itemize}
+   \item<1-> Scala nos permite definir valores inmutables \texttt{val}
+% \begin{lstlisting}[language=Haskell]
+% f (x,y) = (x, ['a' .. y])
+% \end{lstlisting}
+\begin{lstlisting}[language=Scala]
+val diez = 10
+\end{lstlisting}
+\item<2-> Scala nos permite definir funciones. Definamos una
+  función que calcule el mínimo de dos valores enteros.
+\begin{lstlisting}[language=Scala]
+def minimo(x:Int, y:Int):Int = if (x<=y) x else y
+\end{lstlisting}
+   \end{itemize}
+ \end{frame}
+
+
+ \begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Definición de funciones}
+
+  \begin{exampleblock}{Definición de signo}
+    Defina una función \texttt{signo} que evalue la siguiente definición:
+    \[
+      signo(x) = \begin{cases}
+        x < 0 & -1 \\
+        x = 0 & 0 \\
+        x > 0 & 1 \\
+        \end{cases}
+    \]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 2. Funciones puras}
+
+  \begin{exampleblock}{Solucion \texttt{signo}}
+\begin{lstlisting}[language=scala]
+def signo(x:Int):Int = if (x == 0) 0 
+                       else if (x > 0) 1 else -1
+\end{lstlisting}
+  \end{exampleblock}
+  
+\end{frame}
+
+\subsection{Tipos de datos}
+\label{sec:tipos-datos}
+
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Tipos de datos}
+
+  \begin{block}{Definición de tipos de datos}
+    Se define en base a dos elementos:
+    \begin{itemize}
+    \item<1-> Los valores que tienen
+    \item<2-> Las operaciones que transforma esos valores.
+    \end{itemize}
+  \end{block}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Tipos de datos}
+
+  \begin{itemize}
+  \item<1-> En Scala todos los tipos de datos son objetos.
+  \item<2-> Pero podemos dividir estos dos tipos en dos conjuntos.
+    \begin{itemize}
+    \item<3-> Básicos: \texttt{Int}, \texttt{Double}, \texttt{Float}, \texttt{Char}, \texttt{Boolean}, \texttt{Byte}, \texttt{Long},
+      \texttt{Short}.
+    \item<4-> Tipos definidos por usuario.
+      \begin{itemize}
+      \item<5-> Tuplas.
+      \item<6-> Tipos algebraicos.
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Tuplas}
+\label{sec:tuplas}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Tuplas}
+
+  \begin{itemize}
+  \item<1-> Permite definir un conjunto de elementos que no requiere
+    que sea heterogéneos.
+  \item<2-> Esto elementos definen una agrupación de información sin
+    nombres.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Tuplas}
+
+  \begin{exampleblock}{Ejemplos de tuplas}
+\begin{lstlisting}[language=scala]
+val infoEstudiante = ("Juan Cardona", 1234, 1.0, 3.0, 4.0)
+val unMedio = (1,2)
+val localizacion = (23.4,122.23,12.399)
+\end{lstlisting}
+    
+  \end{exampleblock}
+\end{frame}
+
+\subsection{Alias de tipos}
+\label{sec:alias-tipos}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Alias de tipos}
+
+  \begin{itemize}
+  \item<1-> Muchas veces los tipos de datos pueden llegar a ser complicados en su estructura.
+  \item<2-> En otros casos, como en las tuplas puede que no tengan una definición precisa.
+  \item<3-> Es posible darle un nombre diferente a una estructura para facilitar su uso
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Alias de tipos}
+
+  \begin{exampleblock}{Ejemplo de alias}
+\begin{lstlisting}[language=scala]
+type InfoEstudiante = (String,Int,Double,Double,Double)
+type Fraccion = (Int,Int)
+type Coordenada = (Double,Double,Double)
+\end{lstlisting}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Alias de tipos}
+  \begin{exampleblock}{Alias más complejos}
+    Si observa el alias del \texttt{InfoEstudiante} no tiempo mucho
+    significado para alguien externo, y todos sabemos lo importante
+    que el código quede auto-documentado.
+\begin{lstlisting}[language=scala]
+type InfoEstudiante = (String,Int,Double,Double,Double)
+\end{lstlisting}
+    \vspace{-3ex}
+    El estudiante está compuesto de un Nombre, un Código y tres Notas.
+  \end{exampleblock}
+\end{frame}
+
+\subsection{Números fraccionarios}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Números fraccionarios}
+
+  \begin{block}{Definición}
+    Según Wikipedia:
+    \begin{quote}
+      En matemáticas, una fracción, número fraccionario, $\ldots$ es
+      la expresión de una cantidad dividida entre otra cantidad; es
+      decir que representa un cociente no efectuado de números. Por
+      razones históricas también se les llama fracción común, fracción
+      mixta o fracción decimal. Las fracciones comunes se componen de:
+      numerador, denominador y línea divisora entre ambos (barra
+      horizontal u oblicua). En una fracción común $a/b$ el
+      denominador "b" expresa la cantidad de partes iguales que
+      representan la unidad, y el numerador "a" indica cuántas de
+      ellas se toman.
+    \end{quote}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Números fraccionarios}
+
+  \begin{exampleblock}{Ejercicio}
+    Defina una función llamada de identidad \texttt{idFraccion} que
+    reciba un número fraccionario y devuelva el mismo número
+    fraccionario.
+  \end{exampleblock}
+
+  \begin{exampleblock}{Ejercicio}
+    Defina una función llamada de identidad \texttt{idInfoEstudiante}
+    que reciba un estudiante y devuelva el mismo estudiante.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Números fraccionarios}
+
+  \begin{block}<1->{Definición fracción propia}
+    Según Wikipedia:
+    \begin{quote}
+      Las fracciones comunes pueden clasificarse en propias e impropias. Una \textbf{fracción propia} es
+      aquella en la que, si el numerador y el denominador son positivos, el numerador es menor que el denominador, por
+      ejemplo: $\frac{1}{3}$, $\frac{3}{8}$, $\frac{3}{4}$.
+      El contrario define una \texttt{fracción impropia}.
+    \end{quote}
+    \begin{exampleblock}<2->{Ejercicio} Defina una función \texttt{esPropia}
+      para establecer si una fracción es propia (\texttt{true}), en
+      caso contrario (\texttt{false}).
+    \end{exampleblock}
+  \end{block}
+\end{frame}
+
+\subsection{Coincidencia de patrones}
+\label{sec:coincidencia-patrones}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Coincidencia de patrones}
+
+  \begin{itemize}
+  \item<1-> Una coincidencia de patrones es una lista de alternativas.
+  \item<2-> Cada alternativa es un patrón o una más expresiones
+  \end{itemize}  
+\end{frame}
+
+% \begin{frame}
+%   \frametitle{Módulo 2. Funciones puras}
+%   \framesubtitle{Coincidencia de patrones}
+
+%   \begin{block}{Coincidencia de patrones en tuplas}
+%     \begin{itemize}
+%     \item<1-> Se reconstruye al tupla con el número de posiciones correspondientes.
+%     \end{itemize}
+%   \end{block}
+  
+% \end{frame}
+
+\begin{frame}
+  \frametitle{Módulo 2. Funciones puras}
+  \framesubtitle{Números fraccionarios}
+
+  \begin{exampleblock}{Ejercicio}
+    Según Wikipedia: ``Una \textbf{fracción inversa} es una fracción
+    obtenida a partir de otra dada, en la que se ha invertido el
+    numerador y el denominador, es decir la fracción $\frac{a}{b}$ se
+    convierte en $\frac{b}{a}$.
+  \end{exampleblock}
+  
+\end{frame}
+
+
+
+% \subsection{Definición de tipos algebraicos}
+% \label{sec:valores-inmutables}
+
+% \begin{frame}
+%   \frametitle{Módulo 2. Funciones puras}
+%   \framesubtitle{Definición de tipos algebraicos}
+
+%   \begin{exampleblock}{Definición de sucesor}
+%     Los valores númericos se pueden definir de una forma
+%     matemática:
+
+%     \[
+%       Numero = \begin{cases}
+%         0 & \\
+%         Succ(Numero) &  \\
+%         \end{cases}
+%     \]
+%   \end{exampleblock}
+% \end{frame}
+
+% \begin{frame}[fragile]
+%   \frametitle{Módulo 2. Funciones puras}
+%   \framesubtitle{Definición de tipos algebraicos}
+
+%   \begin{block}{Definición de un valor algebraico}
+% \begin{lstlisting}[language=Scala]
+% sealed trait Number
+% case object Zero extends Number
+% case class Succ(x:Number) extends Number
+% \end{lstlisting}    
+%   \end{block}
+% \end{frame}
+
+% \begin{frame}[fragile]
+%   \frametitle{Módulo 2. Funciones puras}
+%   \framesubtitle{Definición de tipos algebraicos}
+
+%   \begin{exampleblock}{Definición}
+% \begin{lstlisting}[language=Scala]
+% def isZero(x:Number):Boolean = x match {
+%   case Zero => true
+%   case _    => false
+% }
+% \end{lstlisting}    
+%   \end{exampleblock}
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Módulo 2. Funciones puras}
+%   \framesubtitle{Definición de tipos algebraicos}
+
+%   \begin{enumerate}
+%   \item Defina una función (\texttt{sum}) se sume dos números.
+%   \item Defina una función (\texttt{mult}) que multiplique dos
+%     números.
+%   \end{enumerate}
+  
+% \end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
