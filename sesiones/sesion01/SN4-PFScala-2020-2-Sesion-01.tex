@@ -1,4 +1,4 @@
-\documentclass[rail]{beamer}
+\documentclass[handout]{beamer}
 
 \usetheme{default}
 
@@ -638,64 +638,64 @@ def minimo(x:Int, y:Int):Int = if (x<=y) x else y
   \end{exampleblock}
 \end{frame}
 
-\subsection{Definición de tipos algebraicos}
-\label{sec:valores-inmutables}
+% \subsection{Definición de tipos algebraicos}
+% \label{sec:valores-inmutables}
 
-\begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Definición de tipos algebraicos}
+% \begin{frame}
+%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Definición de tipos algebraicos}
 
-  \begin{exampleblock}{Definición de sucesor}
-    Los valores númericos se pueden definir de una forma
-    matemática:
+%   \begin{exampleblock}{Definición de sucesor}
+%     Los valores númericos se pueden definir de una forma
+%     matemática:
 
-    \[
-      Numero = \begin{cases}
-        0 & \\
-        Succ(Numero) &  \\
-        \end{cases}
-    \]
-  \end{exampleblock}
-\end{frame}
+%     \[
+%       Numero = \begin{cases}
+%         0 & \\
+%         Succ(Numero) &  \\
+%         \end{cases}
+%     \]
+%   \end{exampleblock}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Definición de tipos algebraicos}
+% \begin{frame}[fragile]
+%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Definición de tipos algebraicos}
 
-  \begin{block}{Definición de un valor algebraico}
-\begin{lstlisting}[language=Scala]
-sealed trait Number
-case object Zero extends Number
-case class Succ(x:Number) extends Number
-\end{lstlisting}    
-  \end{block}
-\end{frame}
+%   \begin{block}{Definición de un valor algebraico}
+% \begin{lstlisting}[language=Scala]
+% sealed trait Number
+% case object Zero extends Number
+% case class Succ(x:Number) extends Number
+% \end{lstlisting}    
+%   \end{block}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Definición de tipos algebraicos}
+% \begin{frame}[fragile]
+%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Definición de tipos algebraicos}
 
-  \begin{exampleblock}{Definición}
-\begin{lstlisting}[language=Scala]
-def isZero(x:Number):Boolean = x match {
-  case Zero => true
-  case _    => false
-}
-\end{lstlisting}    
-  \end{exampleblock}
-\end{frame}
+%   \begin{exampleblock}{Definición}
+% \begin{lstlisting}[language=Scala]
+% def isZero(x:Number):Boolean = x match {
+%   case Zero => true
+%   case _    => false
+% }
+% \end{lstlisting}    
+%   \end{exampleblock}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Definición de tipos algebraicos}
+% \begin{frame}
+%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Definición de tipos algebraicos}
 
-  \begin{enumerate}
-  \item Defina una función (\texttt{sum}) se sume dos números.
-  \item Defina una función (\texttt{mult}) que multiplique dos
-    números.
-  \end{enumerate}
+%   \begin{enumerate}
+%   \item Defina una función (\texttt{sum}) se sume dos números.
+%   \item Defina una función (\texttt{mult}) que multiplique dos
+%     números.
+%   \end{enumerate}
   
-\end{frame}
+% \end{frame}
 \end{document}
 
 %%% Local Variables:
