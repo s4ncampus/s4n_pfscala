@@ -365,164 +365,164 @@ def esCero(x:Int):Boolean = x match {
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Unidad 3. Datos inmutables puras}
-  \framesubtitle{Coincidencia de patrones}
+% \begin{frame}
+%   \frametitle{Unidad 3. Datos inmutables puras}
+%   \framesubtitle{Coincidencia de patrones}
 
-  \begin{block}{Coincidencia de patrones en tuplas}
-    \begin{itemize}
-    \item<1-> Se reconstruye al tupla con el número de posiciones correspondientes.
-    \item<2-> Y cada elemento de la tupla puede seguir las condiciones para los valores anteriores.
-    \end{itemize}
-  \end{block}
-\end{frame}
+%   \begin{block}{Coincidencia de patrones en tuplas}
+%     \begin{itemize}
+%     \item<1-> Se reconstruye al tupla con el número de posiciones correspondientes.
+%     \item<2-> Y cada elemento de la tupla puede seguir las condiciones para los valores anteriores.
+%     \end{itemize}
+%   \end{block}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Coicid}
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 3. Datos inmutables}
+%   \framesubtitle{Coicid}
 
-  \begin{exampleblock}<1->{Ejemplo}
-    Según Wikipedia: ``Una \textbf{fracción inversa} (\texttt{fraccionInv}) es una fracción
-    obtenida a partir de otra dada, en la que se ha invertido el
-    numerador y el denominador, es decir la fracción $\frac{a}{b}$ se
-    convierte en $\frac{b}{a}$.
-  \end{exampleblock}
-  \begin{exampleblock}<2->{Una solución sin coincidencia de patrones}
-\begin{lstlisting}[language=scala]
-def fraccionInv(f:Fraccion):Fraccion = (f._2, f._1)
-\end{lstlisting}
-  \end{exampleblock}
-\end{frame}
+%   \begin{exampleblock}<1->{Ejemplo}
+%     Según Wikipedia: ``Una \textbf{fracción inversa} (\texttt{fraccionInv}) es una fracción
+%     obtenida a partir de otra dada, en la que se ha invertido el
+%     numerador y el denominador, es decir la fracción $\frac{a}{b}$ se
+%     convierte en $\frac{b}{a}$.
+%   \end{exampleblock}
+%   \begin{exampleblock}<2->{Una solución sin coincidencia de patrones}
+% \begin{lstlisting}[language=scala]
+% def fraccionInv(f:Fraccion):Fraccion = (f._2, f._1)
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
 
-%% Solución al ejemplo anterior
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Coincidencia de patrones}
-  \begin{exampleblock}{Utilizando coincidencia de patrones}
-\begin{lstlisting}[language=scala]
-def fraccionInv(f:Fraccion):Fraccion = f match {
-   case (a,b) => (b,a)
-}
-\end{lstlisting}
-  \end{exampleblock}
-\end{frame}
+% %% Solución al ejemplo anterior
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 3. Datos inmutables}
+%   \framesubtitle{Coincidencia de patrones}
+%   \begin{exampleblock}{Utilizando coincidencia de patrones}
+% \begin{lstlisting}[language=scala]
+% def fraccionInv(f:Fraccion):Fraccion = f match {
+%    case (a,b) => (b,a)
+% }
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \begin{exampleblock}{Ejercicio}
-    Utilizando la definición de complejo dada anteriormente redefina la función,
-    pero utilizando coincidencia de patrones con tuplas.
-\begin{lstlisting}[language=scala]
-def igualesC(a:Complejo,b:Complejo):Boolean = (a,b) match {
-   ...
-}
-\end{lstlisting}
-  \end{exampleblock}
-\end{frame}
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 3. Datos inmutables}
+%   \begin{exampleblock}{Ejercicio}
+%     Utilizando la definición de complejo dada anteriormente redefina la función,
+%     pero utilizando coincidencia de patrones con tuplas.
+% \begin{lstlisting}[language=scala]
+% def igualesC(a:Complejo,b:Complejo):Boolean = (a,b) match {
+%    ...
+% }
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
 
-\subsection{Tipos algebraicos}
-\label{sec:valores-inmutables}
+% \subsection{Tipos algebraicos}
+% \label{sec:valores-inmutables}
 
-\begin{frame}
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Tipos algebraicos}
+% \begin{frame}
+%   \frametitle{Unidad 3. Datos inmutables}
+%   \framesubtitle{Tipos algebraicos}
   
-  \begin{block}{Definición}
-    Los tipos de datos son conjuntos y se pueden definir nuevos
-    conjuntos a partir de operaciones de conjuntos. Los operadores más
-    importantes para construir nuevos tipos son la unión (enumeración)
-    y el producto cartesiano.
-    \\
-    Los tipos de datos algebraicos nos permite utilizar definiciones
-    simbólicas basadas en los anteriores operadores para definir
-    nuevos tipos de datos.
-  \end{block}
-\end{frame}
+%   \begin{block}{Definición}
+%     Los tipos de datos son conjuntos y se pueden definir nuevos
+%     conjuntos a partir de operaciones de conjuntos. Los operadores más
+%     importantes para construir nuevos tipos son la unión (enumeración)
+%     y el producto cartesiano.
+%     \\
+%     Los tipos de datos algebraicos nos permite utilizar definiciones
+%     simbólicas basadas en los anteriores operadores para definir
+%     nuevos tipos de datos.
+%   \end{block}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Tipos algebraicos}
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 3. Datos inmutables}
+%   \framesubtitle{Tipos algebraicos}
 
-  \begin{exampleblock}{Definición de los días de la semana}
-\begin{lstlisting}[language=scala]
-sealed trait DiaSemana
-case object Domingo extends DiaSemana
-case object Lunes extends DiaSemana
-case object Martes extends DiaSemana
-case object Miercoles extends DiaSemana
-case object Jueves extends DiaSemana
-case object Viernes extends DiaSemana
-case object Sabado extends DiaSemana
-\end{lstlisting}
-  \end{exampleblock}
-\end{frame}
+%   \begin{exampleblock}{Definición de los días de la semana}
+% \begin{lstlisting}[language=scala]
+% sealed trait DiaSemana
+% case object Domingo extends DiaSemana
+% case object Lunes extends DiaSemana
+% case object Martes extends DiaSemana
+% case object Miercoles extends DiaSemana
+% case object Jueves extends DiaSemana
+% case object Viernes extends DiaSemana
+% case object Sabado extends DiaSemana
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \begin{exampleblock}{Ejercicio}
-    Definir la función \texttt{esFinSemana}
-\begin{lstlisting}[language=scala]
-def esFinSemana(d:DiaSemana):Boolean = ???
-\end{lstlisting}
-  \end{exampleblock}
-\end{frame}
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 3. Datos inmutables}
+%   \begin{exampleblock}{Ejercicio}
+%     Definir la función \texttt{esFinSemana}
+% \begin{lstlisting}[language=scala]
+% def esFinSemana(d:DiaSemana):Boolean = ???
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
 
 
-\begin{frame}
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Tipos algebraicos}
+% \begin{frame}
+%   \frametitle{Unidad 3. Datos inmutables}
+%   \framesubtitle{Tipos algebraicos}
 
-  \begin{exampleblock}{Definición de sucesor}
-    Los valores númericos se pueden definir de una forma
-    matemática:
+%   \begin{exampleblock}{Definición de sucesor}
+%     Los valores númericos se pueden definir de una forma
+%     matemática:
 
-    \[
-      Numero = \begin{cases}
-        0 & \\
-        Succ(Numero) &  \\
-      \end{cases}
-    \]
-  \end{exampleblock}
-\end{frame}
+%     \[
+%       Numero = \begin{cases}
+%         0 & \\
+%         Succ(Numero) &  \\
+%       \end{cases}
+%     \]
+%   \end{exampleblock}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Tipos algebraicos}
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 3. Datos inmutables}
+%   \framesubtitle{Tipos algebraicos}
 
-  \begin{block}{Definición de un valor algebraico}
-\begin{lstlisting}[language=Scala]
-sealed trait Number
-case object Zero extends Number
-case class Succ(x:Number) extends Number
-\end{lstlisting}    
-  \end{block}
-\end{frame}
+%   \begin{block}{Definición de un valor algebraico}
+% \begin{lstlisting}[language=Scala]
+% sealed trait Number
+% case object Zero extends Number
+% case class Succ(x:Number) extends Number
+% \end{lstlisting}    
+%   \end{block}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Tipos algebraicos}
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 3. Datos inmutables}
+%   \framesubtitle{Tipos algebraicos}
 
-  \begin{exampleblock}{Definición}
-\begin{lstlisting}[language=Scala]
-def isZero(x:Number):Boolean = x match {
-case Zero => true
-case _    => false
-}
-\end{lstlisting}    
-  \end{exampleblock}
-\end{frame}
+%   \begin{exampleblock}{Definición}
+% \begin{lstlisting}[language=Scala]
+% def isZero(x:Number):Boolean = x match {
+% case Zero => true
+% case _    => false
+% }
+% \end{lstlisting}    
+%   \end{exampleblock}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Tipos algebraicos}
+% \begin{frame}
+%   \frametitle{Unidad 3. Datos inmutables}
+%   \framesubtitle{Tipos algebraicos}
 
-  \begin{enumerate}
-  \item Defina una función (\texttt{sum}) se sume dos números.
-  \item Defina una función (\texttt{mult}) que multiplique dos
-    números.
-  \end{enumerate}
+%   \begin{enumerate}
+%   \item Defina una función (\texttt{sum}) se sume dos números.
+%   \item Defina una función (\texttt{mult}) que multiplique dos
+%     números.
+%   \end{enumerate}
 
-\end{frame}
+% \end{frame}
 
 \end{document}
 
