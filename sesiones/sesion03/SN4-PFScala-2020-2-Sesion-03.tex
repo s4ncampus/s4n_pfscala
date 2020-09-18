@@ -200,7 +200,7 @@ def igualesC(a:Complejo,b:Complejo):Boolean = ???
 
 \begin{frame}
   \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{¿Qué son los datos inmutables?}
+  \framesubtitle{Datos inmutables}
 
   \begin{block}<1->{Tipos de datos}
     Los tipos de datos están formados por:
@@ -217,7 +217,8 @@ def igualesC(a:Complejo,b:Complejo):Boolean = ???
 
 \begin{frame}[fragile]
   \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{¿Qué son los datos inmutables?}
+  \framesubtitle{Datos inmutables}
+  
   \begin{exampleblock}{Ejemplo}
     \begin{itemize}
     \item<1-> En Java las cadenas de caracteres \texttt{String} son
@@ -237,9 +238,67 @@ System.out.println(s);
   \end{exampleblock}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{Datos inmutables}
+
+  \begin{block}<1->{Conceptos de inmutablidad y mutable}
+    \begin{itemize}
+    \item<2-> Un objeto \textbf{inmutable} es un objeto que no puede ser modificado después de que ha sido creado.
+    \item<3-> Un objeto \textbf{mutable} es uno objeto que puede ser modificado después de ha sido modificado.
+    \end{itemize}
+  \end{block}
+  \begin{exampleblock}<4->{Inmutable y mutables en Scala}
+\begin{lstlisting}[language=scala]
+val inmutable = 3
+var mutable = 4
+mutable = 6
+inmutable = 9   // Error
+\end{lstlisting}
+  \end{exampleblock}
+\end{frame}
+
 \begin{frame}
   \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{Datos inmutables}
   
+  \begin{block}<1->{Dudas sobre la inmutabilidad}
+    \begin{itemize}
+    \item<2-> ¿Cómo se puede hacer cómputos si una variable no puede cambiar?
+    \item<3-> ¿Qué beneficios nos trae el uso de datos inmutables?
+    \item<4-> ¿No trae problemas de desempeño?
+    \item<5-> ¿No tiene problemas de memoria?
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{Datos inmutables}
+
+  \begin{exampleblock}{Ejemplo}
+    Dado el tipo \texttt{Fraccion} redefinir la función de \texttt{idFraccion} sin pasar una copia de la
+    variable sino que se construye un valor nuevo. \textbf{Nota:} Utilizar los operadores de selección
+    de las tuplas.
+\begin{lstlisting}[language=scala]
+type Fraccion = (Int,Int)
+def idFraccion(f:Fraccion) = ???
+\end{lstlisting}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{Datos inmutables}
+
+  \begin{exampleblock}{Solucion}
+\begin{lstlisting}[language=scala]
+
+type Fraccion = (Int,Int)
+def idFraccion(f:Fraccion) = (f._1, f._2)
+\end{lstlisting}
+    
+  \end{exampleblock}
 \end{frame}
 
 \subsection{Coincidencia de patrones}
@@ -292,10 +351,18 @@ System.out.println(s);
   
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Unidad 3. Datos inmutables}
   \framesubtitle{Coincidencia de patrones}
-  
+
+  \begin{exampleblock}{Solución}
+\begin{lstlisting}[language=scala]
+def esCero(x:Int):Boolean = x match {
+   case 0 => true
+   case _ => false
+}
+\end{lstlisting}
+  \end{exampleblock}
 \end{frame}
 
 \begin{frame}
@@ -308,28 +375,102 @@ System.out.println(s);
     \item<2-> Y cada elemento de la tupla puede seguir las condiciones para los valores anteriores.
     \end{itemize}
   \end{block}
-
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Números fraccionarios}
+  \framesubtitle{Coicid}
 
-  \begin{exampleblock}{Ejemplo}
-    Según Wikipedia: ``Una \textbf{fracción inversa} es una fracción
+  \begin{exampleblock}<1->{Ejemplo}
+    Según Wikipedia: ``Una \textbf{fracción inversa} (\texttt{fraccionInv}) es una fracción
     obtenida a partir de otra dada, en la que se ha invertido el
     numerador y el denominador, es decir la fracción $\frac{a}{b}$ se
     convierte en $\frac{b}{a}$.
   \end{exampleblock}
+  \begin{exampleblock}<2->{Una solución sin coincidencia de patrones}
+\begin{lstlisting}[language=scala]
+def fraccionInv(f:Fraccion):Fraccion = (f._2, f._1)
+\end{lstlisting}
+  \end{exampleblock}
 \end{frame}
 
+%% Solución al ejemplo anterior
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{Coincidencia de patrones}
+  \begin{exampleblock}{Utilizando coincidencia de patrones}
+\begin{lstlisting}[language=scala]
+def fraccionInv(f:Fraccion):Fraccion = f match {
+   case (a,b) => (b,a)
+}
+\end{lstlisting}
+  \end{exampleblock}
+\end{frame}
 
-\subsection{Definición de tipos algebraicos}
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \begin{exampleblock}{Ejercicio}
+    Utilizando la definición de complejo dada anteriormente redefina la función,
+    pero utilizando coincidencia de patrones con tuplas.
+\begin{lstlisting}[language=scala]
+def igualesC(a:Complejo,b:Complejo):Boolean = (a,b) match {
+   ...
+}
+\end{lstlisting}
+  \end{exampleblock}
+\end{frame}
+
+\subsection{Tipos algebraicos}
 \label{sec:valores-inmutables}
 
 \begin{frame}
   \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Definición de tipos algebraicos}
+  \framesubtitle{Tipos algebraicos}
+  
+  \begin{block}{Definición}
+    Los tipos de datos son conjuntos y se pueden definir nuevos
+    conjuntos a partir de operaciones de conjuntos. Los operadores más
+    importantes para construir nuevos tipos son la unión (enumeración)
+    y el producto cartesiano.
+    \\
+    Los tipos de datos algebraicos nos permite utilizar definiciones
+    simbólicas basadas en los anteriores operadores para definir
+    nuevos tipos de datos.
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{Tipos algebraicos}
+
+  \begin{exampleblock}{Definición de los días de la semana}
+\begin{lstlisting}[language=scala]
+sealed trait DiaSemana
+case object Domingo extends DiaSemana
+case object Lunes extends DiaSemana
+case object Martes extends DiaSemana
+case object Miercoles extends DiaSemana
+case object Jueves extends DiaSemana
+case object Viernes extends DiaSemana
+case object Sabado extends DiaSemana
+\end{lstlisting}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \begin{exampleblock}{Ejercicio}
+    Definir la función \texttt{esFinSemana}
+\begin{lstlisting}[language=scala]
+def esFinSemana(d:DiaSemana):Boolean = ???
+\end{lstlisting}
+  \end{exampleblock}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{Tipos algebraicos}
 
   \begin{exampleblock}{Definición de sucesor}
     Los valores númericos se pueden definir de una forma
@@ -346,7 +487,7 @@ System.out.println(s);
 
 \begin{frame}[fragile]
   \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Definición de tipos algebraicos}
+  \framesubtitle{Tipos algebraicos}
 
   \begin{block}{Definición de un valor algebraico}
 \begin{lstlisting}[language=Scala]
@@ -359,7 +500,7 @@ case class Succ(x:Number) extends Number
 
 \begin{frame}[fragile]
   \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Definición de tipos algebraicos}
+  \framesubtitle{Tipos algebraicos}
 
   \begin{exampleblock}{Definición}
 \begin{lstlisting}[language=Scala]
@@ -373,7 +514,7 @@ case _    => false
 
 \begin{frame}
   \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Definición de tipos algebraicos}
+  \framesubtitle{Tipos algebraicos}
 
   \begin{enumerate}
   \item Defina una función (\texttt{sum}) se sume dos números.
