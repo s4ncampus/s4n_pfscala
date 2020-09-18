@@ -84,7 +84,7 @@
     \item Introducir más elementos de la programación funcional pura.
       \begin{itemize}
       \item Coincidencia de patrones
-      \item Tipos de datos algebraicos.
+      \item Tipos de datos algebraicos
       \end{itemize}
     \end{itemize}
   \end{block}
@@ -98,12 +98,148 @@
   \frametitle{Unidad 3. Datos inmutables}
   \framesubtitle{A modo de repaso}
 
-  \begin{block}{¿Qué es la programación funcional}
+  \begin{block}{¿Qué es una función pura?}
     \begin{quote}
-      La programación funcional es una forma de escribir software utilizando únicamente \hl{funciones puras} y \hl{valores
-        inmutables}.
+      Una \hl{función pura} es una función que depende únicamente de sus parámetros de entrada y su algoritmo produce
+      su salida. Este no lee cualquier valor del ``mundo exterior'' y no modifica valor alguno del mundo exterior.
     \end{quote}
   \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{A modo de repaso}
+
+  \begin{exampleblock}{Ejercicio. Defina la función \texttt{abs}}
+    La siguiente es la definición matemática de la función de valor absoluto.
+    \[
+      abs(x) = \begin{cases}
+        x & \text{Si}\ x > 0  \\
+        -x & \text{De otra forma}\\
+      \end{cases}
+    \]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{A modo de repaso}
+
+  \begin{block}{¿Qué es un tupla?}
+    Una tupla es una colección de elementos no homogéneos, que pueden
+    ser manipulados de forma total o individual. Una vez definida la
+    tupla el número de elementos no puede ser modificado.
+  \end{block}
+  \begin{block}<2->{Tuplas en Scala}
+\begin{lstlisting}[language=scala]
+val porcentajeTrimestre = (0.12,0.23,0.90,0.12)
+\end{lstlisting}
+    \vspace{-4ex}
+    \begin{block}{Acceso a los valores individuales}
+      Cada valor puede ser accedido de forma individual utilizando el
+      operador \texttt{\_numero} donde \verb!numero! se refiere a cada
+      posición de la tupla.
+\begin{lstlisting}[language=scala]
+val tercerTrimestre = porcentajeTrimestre._3
+\end{lstlisting}
+    \end{block}
+  \end{block}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+
+  \begin{block}{¿Qué es un alias?}
+    Un \emph{alias} dentro de los lenguajes de programación un
+    objeto\footnote{Cualquier elemento: como funciones, variables. No
+      tiene que ver con la programación orientada a objetos.} los
+    nombres sirven para referirse a ellos, cuando un objeto tiene más
+    de un nombre se indica que se tiene un alias.
+  \end{block}
+  \begin{block}{Alias en Scala}
+\begin{lstlisting}[language=scala]
+type Porciento = Double
+type PorTri = (Porciento,Porciento,Porciento,Porciento)
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{A modo de repaso}
+
+  \begin{exampleblock}{Ejercicio}
+    Según Wikipedia:
+    \begin{quote}
+      ``Se define cada número complejo como un par ordenado de números
+      reales: $z=(a,b)$.  A su vez cada elemento $a$ se define como
+      \textbf{parte real} de z, se denota $a = Re(z)$; el segundo
+      elemento $b$ se define como \textbf{parte imaginaria}. Luego
+      en conjunto $\mathbb{C}$ de los números complejos, se definen
+      tres operaciones y la relación de igualdad:''
+      \[
+        (a,b) \equiv (c,d) \iff a \equiv c \wedge b \equiv d
+      \]
+    \end{quote}
+
+    \begin{itemize}
+    \item<3-> Cree una alias \texttt{Complejo} que represente los valores complejos
+    \item<4-> Defina la función de \texttt{igualdadComplejo} que tiene la siguiente
+      firma:
+\begin{lstlisting}[language=scala]
+def igualesC(a:Complejo,b:Complejo):Boolean = ???
+\end{lstlisting}
+    \end{itemize}
+    
+  \end{exampleblock}
+  
+\end{frame}
+
+\subsection{Datos inmutables}
+
+\begin{frame}
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{¿Qué son los datos inmutables?}
+
+  \begin{block}<1->{Tipos de datos}
+    Los tipos de datos están formados por:
+    \begin{itemize}
+    \item<2-> Valores.
+    \item<3-> Operaciones.
+    \end{itemize}
+  \end{block}
+  \begin{block}<4->{Acercamiento} Un dato es inmutable por que es
+    obtenido a través de las operaciones que define su tipo y no
+    utilizan ningún \emph{efecto colateral} para almacenarlo.
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{¿Qué son los datos inmutables?}
+  \begin{exampleblock}{Ejemplo}
+    \begin{itemize}
+    \item<1-> En Java las cadenas de caracteres \texttt{String} son
+      tipos de datos inmutables.
+    \item<2-> Para crear una nueva cadena debemos utilizar las
+      operaciones que definen el tipo de dato \texttt{String}.
+\begin{lstlisting}[language=Java]
+...
+String s = "Hola Mundo";
+String hola = s.substring(0,4);
+String mundo = s.substring(5);
+System.out.println(hola + " " + mundo);
+System.out.println(s);
+...
+\end{lstlisting}
+  \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unidad 3. Datos inmutables}
+  
 \end{frame}
 
 \subsection{Coincidencia de patrones}
@@ -115,35 +251,77 @@
 
   \begin{itemize}
   \item<1-> Una coincidencia de patrones es una lista de alternativas.
-  \item<2-> Cada alternativa es un patrón o una más expresiones
+  \item<2-> Cada alternativa es un patrón o una más expresiones.
+  \item<3-> Un patrón puede ser:
+    \begin{itemize}
+    \item<4-> Un valor del tipo de dato.
+    \item<5-> Una variable.
+    \item<6-> Un comodín que ser refiera a un conjunto de valores: \texttt{\_} se refiere a cualquier valor.
+    \end{itemize}
   \end{itemize}  
 \end{frame}
 
-% \begin{frame}
-%   \frametitle{Unidad 3. Datos inmutables puras}
-%   \framesubtitle{Coincidencia de patrones}
+\begin{frame}[fragile]
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{Coincidencia de patrones}
+  
+  \begin{block}{Constructor \texttt{match}}
+\begin{alltt}
+<var> match \{
+(case (<value> [| <value>]...) => <expr>) ...
+\}
+\end{alltt}
+    Donde \verb!<value>! puede ser un valor del tipo de dato o un comodín.
+    También \verb!<value>! puede ser acompañado de un constructor \texttt{if}.
+  \end{block}
+\end{frame}
 
-%   \begin{block}{Coincidencia de patrones en tuplas}
-%     \begin{itemize}
-%     \item<1-> Se reconstruye al tupla con el número de posiciones correspondientes.
-%     \end{itemize}
-%   \end{block}
+\begin{frame}
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{Coincidencia de patrones}
 
-% \end{frame}
+  \begin{exampleblock}{Ejercicio}
+    Defina la función \texttt{esCero}:
+    \[
+      esCero(x) = \begin{cases}
+        \text{\texttt{true}} & 0 \\
+        \text{\texttt{false}} & \text{De otra forma}\\
+        \end{cases}
+    \]
+  \end{exampleblock}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unidad 3. Datos inmutables}
+  \framesubtitle{Coincidencia de patrones}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unidad 3. Datos inmutables puras}
+  \framesubtitle{Coincidencia de patrones}
+
+  \begin{block}{Coincidencia de patrones en tuplas}
+    \begin{itemize}
+    \item<1-> Se reconstruye al tupla con el número de posiciones correspondientes.
+    \item<2-> Y cada elemento de la tupla puede seguir las condiciones para los valores anteriores.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
 
 \begin{frame}
   \frametitle{Unidad 3. Datos inmutables}
   \framesubtitle{Números fraccionarios}
 
-  \begin{exampleblock}{Ejercicio}
+  \begin{exampleblock}{Ejemplo}
     Según Wikipedia: ``Una \textbf{fracción inversa} es una fracción
     obtenida a partir de otra dada, en la que se ha invertido el
     numerador y el denominador, es decir la fracción $\frac{a}{b}$ se
     convierte en $\frac{b}{a}$.
   \end{exampleblock}
-
 \end{frame}
-
 
 
 \subsection{Definición de tipos algebraicos}
