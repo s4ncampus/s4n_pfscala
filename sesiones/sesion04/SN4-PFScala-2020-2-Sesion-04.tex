@@ -14,6 +14,7 @@
 \usepackage{alltt}
 \usepackage[ruled,vlined]{algorithm2e}
 \usepackage{soul}
+\usepackage{enumerate}
 \makeatletter
 \let\HL\hl
 \renewcommand\hl{%
@@ -56,7 +57,7 @@
 
 \title{Programación Funcional con Scala\\Sesion 4}
 \date{23 de Septiembre de 2020}
-\author{Juan Cardona}
+\author{S4N Campus}
 \institute{S4N}
 
 \begin{document}
@@ -69,22 +70,23 @@
   \frametitle{Agenda}\tableofcontents
 \end{frame}
 
-\section{Unidad 3. Datos inmutables}
+\section{Unidad 4. Datos inmutables, recursividad}
 
 \subsection{Introducción}
 \label{sec:introduccion}
 
 \begin{frame}
-  \frametitle{Unidad 3. Datos inmutables}
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
   \framesubtitle{Introducción}
   \begin{block}{Objetivos}
 
     \begin{itemize}
-    \item Definir qué son los tipos de datos inmutables.
-    \item Introducir más elementos de la programación funcional pura.
+    \item Completar la definición de tipos de datos inmutables.
+    \item Definición de funciones puras a través de la recursividad.
+    \item Introducción a elementos de programación funcional pura.
       \begin{itemize}
-      \item Coincidencia de patrones
-      \item Tipos de datos algebraicos
+      \item Coincidencia de patrones.
+      \item Tipos de datos algebraicos.
       \end{itemize}
     \end{itemize}
   \end{block}
@@ -94,82 +96,122 @@
 \subsection{A modo de repaso}
 \label{sec:a-modo-repaso}
 
-\begin{frame}
-  \frametitle{Unidad 3. Datos inmutables}
+\begin{frame}[fragile]
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
   \framesubtitle{A modo de repaso}
 
-  \begin{block}{¿Qué es una función pura?}
-    \begin{quote}
-      Una \hl{función pura} es una función que depende únicamente de sus parámetros de entrada y su algoritmo produce
-      su salida. Este no lee cualquier valor del ``mundo exterior'' y no modifica valor alguno del mundo exterior.
-    \end{quote}
-  \end{block}
-\end{frame}
+  \begin{exampleblock}{Ejercicio}
+\begin{lstlisting}[language=scala]
+trait Ordering
+case object GT extends Ordering
+case object LT extends Ordering
+case object EQ extends Ordering
 
-\begin{frame}
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{A modo de repaso}
-
-  \begin{exampleblock}{Ejercicio. Defina la función \texttt{abs}}
-    La siguiente es la definición matemática de la función de valor absoluto.
-    \[
-      abs(x) = \begin{cases}
-        x & \text{Si}\ x > 0  \\
-        -x & \text{De otra forma}\\
-      \end{cases}
-    \]
+def ordering(v1: Int, v2: Int):Ordering = 
+\end{lstlisting}
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
+\begin{frame}
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
   \framesubtitle{A modo de repaso}
 
-  \begin{block}{¿Qué es un tupla?}
-    Una tupla es una colección de elementos no homogéneos, que pueden
-    ser manipulados de forma total o individual. Una vez definida la
-    tupla el número de elementos no puede ser modificado.
-  \end{block}
-  \begin{block}<2->{Tuplas en Scala}
-\begin{lstlisting}[language=scala]
-val porcentajeTrimestre = (0.12,0.23,0.90,0.12)
-\end{lstlisting}
-    \vspace{-4ex}
-    \begin{block}{Acceso a los valores individuales}
-      Cada valor puede ser accedido de forma individual utilizando el
-      operador \texttt{\_numero} donde \verb!numero! se refiere a cada
-      posición de la tupla.
-\begin{lstlisting}[language=scala]
-val tercerTrimestre = porcentajeTrimestre._3
-\end{lstlisting}
-    \end{block}
-  \end{block}
+  \begin{enumerate}
+  \item<1-> Observe las líneas 1 a 4. ¿Recuerda la definición de un tipo de dato? Estas están definiendo un tipo de dato. ¿Indique que hace cada una de las cuatro líneas?
+  \item<2-> Una cosa importante en la programación funcional
+    es aprender la firma\footnote{\emph{signature}} de la función. ¿Qué puede interpretar de la signatura de la función?
+  \end{enumerate}
   
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
+  \framesubtitle{A modo de repaso}
 
-  \begin{block}{¿Qué es un alias?}
-    Un \emph{alias} dentro de los lenguajes de programación un
-    objeto\footnote{Cualquier elemento: como funciones, variables. No
-      tiene que ver con la programación orientada a objetos.} los
-    nombres sirven para referirse a ellos, cuando un objeto tiene más
-    de un nombre se indica que se tiene un alias.
-  \end{block}
-  \begin{block}{Alias en Scala}
+  \begin{exampleblock}{Ejercicio (continuación)}
 \begin{lstlisting}[language=scala]
-type Porciento = Double
-type PorTri = (Porciento,Porciento,Porciento,Porciento)
+trait Ordering
+case object GT extends Ordering
+case object LT extends Ordering
+case object EQ extends Ordering
+
+def ordering(v1: Int, v2: Int):Ordering = 
+(v1,v2) match {
+  case (v1,v2) if (v1 > v2) => GT
+  case (v1,v2) if (v1 < v2) => LT
+  case _                    => EQ
+}
 \end{lstlisting}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
+  \framesubtitle{A modo de repaso}
+
+  \begin{enumerate}\addtocounter{enumi}{2}
+  \item<1-> Observe la línea 7. Esta es una forma de coincidencia
+    de patrones: ¿Qué tipo de define antes del constructor \texttt{match}?
+  \item<2-> ¿Por qué es importante definir el tipo de dato como
+    una tupla?
+  \item<3-> ¿Qué efecto tiene el constructor \texttt{if} dentro la
+    estructura \texttt{case}?
+  \item<4-> ¿Por qué es necesario tener la estructura \texttt{case} en la línea 10?
+  \item<5-> ¿Por qué el autor de esta función dice que está es una función inmutable?
+  \end{enumerate}
+  
+\end{frame}
+
+\subsection{Coincidencia de patrones}
+\label{sec:coincidencia-patrones}
+
+\begin{frame}
+  \frametitle{Unidad 4. Datos inmutables, recursividad puras}
+  \framesubtitle{Coincidencia de patrones}
+
+  \begin{block}{Coincidencia de patrones en tuplas}
+    \begin{itemize}
+    \item<1-> Se reconstruye al tupla con el número de posiciones correspondientes.
+    \item<2-> Y cada elemento de la tupla puede seguir las condiciones para los valores anteriores.
+    \end{itemize}
   \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{A modo de repaso}
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
+  \framesubtitle{Coincidencia de patrones}
 
-  \begin{exampleblock}{Ejercicio}
+  \begin{exampleblock}<1->{Ejemplo}
+    Según Wikipedia: ``Una \textbf{fracción inversa} (\texttt{fraccionInv}) es una fracción
+    obtenida a partir de otra dada, en la que se ha invertido el
+    numerador y el denominador, es decir la fracción $\frac{a}{b}$ se
+    convierte en $\frac{b}{a}$.
+  \end{exampleblock}
+  \begin{exampleblock}<2->{Una solución sin coincidencia de patrones}
+\begin{lstlisting}[language=scala]
+def fraccionInv(f:Fraccion):Fraccion = (f._2, f._1)
+\end{lstlisting}
+  \end{exampleblock}
+\end{frame}
+
+%% Solución al ejemplo anterior
+\begin{frame}[fragile]
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
+  \framesubtitle{Coincidencia de patrones}
+  \begin{exampleblock}{fracción inversa}
+    Ahora utilizando coincidencia de patrones complete el siguiente
+    código
+\begin{lstlisting}[language=scala]
+def fraccionInv(f:Fraccion):Fraccion = ???
+\end{lstlisting}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
+  \framesubtitle{Coincidencia de patrones}
+
+    \begin{exampleblock}{Ejercicio}
     Según Wikipedia:
     \begin{quote}
       ``Se define cada número complejo como un par ordenado de números
@@ -178,351 +220,318 @@ type PorTri = (Porciento,Porciento,Porciento,Porciento)
       elemento $b$ se define como \textbf{parte imaginaria}. Luego
       en conjunto $\mathbb{C}$ de los números complejos, se definen
       tres operaciones y la relación de igualdad:''
+      \vspace{-2ex}
       \[
         (a,b) \equiv (c,d) \iff a \equiv c \wedge b \equiv d
       \]
     \end{quote}
-
+    \vspace{-3ex}
     \begin{itemize}
     \item<3-> Cree una alias \texttt{Complejo} que represente los valores complejos
     \item<4-> Defina la función de \texttt{igualdadComplejo} que tiene la siguiente
       firma:
 \begin{lstlisting}[language=scala]
-def igualesC(a:Complejo,b:Complejo):Boolean = ???
-\end{lstlisting}
-    \end{itemize}
-    
-  \end{exampleblock}
-  
-\end{frame}
-
-\subsection{Datos inmutables}
-
-\begin{frame}
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Datos inmutables}
-
-  \begin{block}<1->{Tipos de datos}
-    Los tipos de datos están formados por:
-    \begin{itemize}
-    \item<2-> Valores.
-    \item<3-> Operaciones.
-    \end{itemize}
-  \end{block}
-  \begin{block}<4->{Acercamiento} Un dato es inmutable por que es
-    obtenido a través de las operaciones que define su tipo y no
-    utilizan ningún \emph{efecto colateral} para almacenarlo.
-  \end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Datos inmutables}
-  
-  \begin{exampleblock}{Ejemplo}
-    \begin{itemize}
-    \item<1-> En Java las cadenas de caracteres \texttt{String} son
-      tipos de datos inmutables.
-    \item<2-> Para crear una nueva cadena debemos utilizar las
-      operaciones que definen el tipo de dato \texttt{String}.
-\begin{lstlisting}[language=Java]
-...
-String s = "Hola Mundo";
-String hola = s.substring(0,4);
-String mundo = s.substring(5);
-System.out.println(hola + " " + mundo);
-System.out.println(s);
-...
-\end{lstlisting}
-  \end{itemize}
-  \end{exampleblock}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Datos inmutables}
-
-  \begin{block}<1->{Conceptos de inmutablidad y mutable}
-    \begin{itemize}
-    \item<2-> Un objeto \textbf{inmutable} es un objeto que no puede ser modificado después de que ha sido creado.
-    \item<3-> Un objeto \textbf{mutable} es uno objeto que puede ser modificado después de ha sido modificado.
-    \end{itemize}
-  \end{block}
-  \begin{exampleblock}<4->{Inmutable y mutables en Scala}
-\begin{lstlisting}[language=scala]
-val inmutable = 3
-var mutable = 4
-mutable = 6
-inmutable = 9   // Error
-\end{lstlisting}
-  \end{exampleblock}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Datos inmutables}
-  
-  \begin{block}<1->{Dudas sobre la inmutabilidad}
-    \begin{itemize}
-    \item<2-> ¿Cómo se puede hacer cómputos si una variable no puede cambiar?
-    \item<3-> ¿Qué beneficios nos trae el uso de datos inmutables?
-    \item<4-> ¿No trae problemas de desempeño?
-    \item<5-> ¿No tiene problemas de memoria?
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Datos inmutables}
-
-  \begin{exampleblock}{Ejemplo}
-    Dado el tipo \texttt{Fraccion} redefinir la función de \texttt{idFraccion} sin pasar una copia de la
-    variable sino que se construye un valor nuevo. \textbf{Nota:} Utilizar los operadores de selección
-    de las tuplas.
-\begin{lstlisting}[language=scala]
-type Fraccion = (Int,Int)
-def idFraccion(f:Fraccion) = ???
-\end{lstlisting}
-  \end{exampleblock}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Datos inmutables}
-
-  \begin{exampleblock}{Solucion}
-\begin{lstlisting}[language=scala]
-
-type Fraccion = (Int,Int)
-def idFraccion(f:Fraccion) = (f._1, f._2)
-\end{lstlisting}
-    
-  \end{exampleblock}
-\end{frame}
-
-\subsection{Coincidencia de patrones}
-\label{sec:coincidencia-patrones}
-
-\begin{frame}
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Coincidencia de patrones}
-
-  \begin{itemize}
-  \item<1-> Una coincidencia de patrones es una lista de alternativas.
-  \item<2-> Cada alternativa es un patrón o una más expresiones.
-  \item<3-> Un patrón puede ser:
-    \begin{itemize}
-    \item<4-> Un valor del tipo de dato.
-    \item<5-> Una variable.
-    \item<6-> Un comodín que ser refiera a un conjunto de valores: \texttt{\_} se refiere a cualquier valor.
-    \end{itemize}
-  \end{itemize}  
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Coincidencia de patrones}
-  
-  \begin{block}{Constructor \texttt{match}}
-\begin{alltt}
-<var> match \{
-(case (<value> [| <value>]...) => <expr>) ...
-\}
-\end{alltt}
-    Donde \verb!<value>! puede ser un valor del tipo de dato o un comodín.
-    También \verb!<value>! puede ser acompañado de un constructor \texttt{if}.
-  \end{block}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Coincidencia de patrones}
-
-  \begin{exampleblock}{Ejercicio}
-    Defina la función \texttt{esCero}:
-    \[
-      esCero(x) = \begin{cases}
-        \text{\texttt{true}} & 0 \\
-        \text{\texttt{false}} & \text{De otra forma}\\
-        \end{cases}
-    \]
-  \end{exampleblock}
-  
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Unidad 3. Datos inmutables}
-  \framesubtitle{Coincidencia de patrones}
-
-  \begin{exampleblock}{Solución}
-\begin{lstlisting}[language=scala]
-def esCero(x:Int):Boolean = x match {
-   case 0 => true
-   case _ => false
+def igualesC(a:Complejo,b:Complejo):Boolean = (a,b) match {
+   ...
 }
 \end{lstlisting}
+    \end{itemize}
+    
+  \end{exampleblock}
+
+\end{frame}
+
+\subsection{Tipos algebraicos}
+\label{sec:valores-inmutables}
+
+\begin{frame}
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
+  \framesubtitle{Tipos algebraicos}
+  
+  \begin{block}{Definición}
+    Los tipos de datos son conjuntos y se pueden definir nuevos
+    conjuntos a partir de operaciones de conjuntos. Los operadores más
+    importantes para construir nuevos tipos son la unión (enumeración)
+    y el producto cartesiano.
+    \\
+    Los tipos de datos algebraicos nos permite utilizar definiciones
+    simbólicas basadas en los anteriores operadores para definir
+    nuevos tipos de datos.
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
+  \framesubtitle{Tipos algebraicos}
+
+  \begin{exampleblock}{Definición de los días de la semana}
+\begin{lstlisting}[language=scala]
+sealed trait DiaSemana
+case object Domingo extends DiaSemana
+case object Lunes extends DiaSemana
+case object Martes extends DiaSemana
+case object Miercoles extends DiaSemana
+case object Jueves extends DiaSemana
+case object Viernes extends DiaSemana
+case object Sabado extends DiaSemana
+\end{lstlisting}
   \end{exampleblock}
 \end{frame}
 
-% \begin{frame}
-%   \frametitle{Unidad 3. Datos inmutables puras}
-%   \framesubtitle{Coincidencia de patrones}
+\begin{frame}[fragile]
+  \frametitle{Unidad 4. Datos inmutables, recursividad}
+  \begin{exampleblock}{Ejercicio}
+    Definir la función \texttt{esFinSemana}
+\begin{lstlisting}[language=scala]
+def esFinSemana(d:DiaSemana):Boolean = ???
+\end{lstlisting}
+  \end{exampleblock}
+\end{frame}
 
-%   \begin{block}{Coincidencia de patrones en tuplas}
-%     \begin{itemize}
-%     \item<1-> Se reconstruye al tupla con el número de posiciones correspondientes.
-%     \item<2-> Y cada elemento de la tupla puede seguir las condiciones para los valores anteriores.
-%     \end{itemize}
+% \subsection{Recursividad}
+% \label{sec:recursividad}
+
+% \begin{frame}
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
+
+%   \begin{block}{Recursividad}
+%     Según Wikipedia:
+%     \begin{quote}
+%       ``\textbf{Recursión} o \textbf{Recursividad} es la
+%       forma en la cual se especifica un proceso basado
+%       en su propia definición. La \textbf{recursión} tiene esta característica discernible en términos de autorreferencialidad, autopoiesis, fractalidad, o en otras palabras, construcción
+%       a partir de un mismo tipo.''
+%     \end{quote}
 %   \end{block}
 % \end{frame}
 
-% \begin{frame}[fragile]
-%   \frametitle{Unidad 3. Datos inmutables}
-%   \framesubtitle{Coicid}
+% \begin{frame}
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
 
-%   \begin{exampleblock}<1->{Ejemplo}
-%     Según Wikipedia: ``Una \textbf{fracción inversa} (\texttt{fraccionInv}) es una fracción
-%     obtenida a partir de otra dada, en la que se ha invertido el
-%     numerador y el denominador, es decir la fracción $\frac{a}{b}$ se
-%     convierte en $\frac{b}{a}$.
-%   \end{exampleblock}
-%   \begin{exampleblock}<2->{Una solución sin coincidencia de patrones}
-% \begin{lstlisting}[language=scala]
-% def fraccionInv(f:Fraccion):Fraccion = (f._2, f._1)
-% \end{lstlisting}
-%   \end{exampleblock}
-% \end{frame}
-
-% %% Solución al ejemplo anterior
-% \begin{frame}[fragile]
-%   \frametitle{Unidad 3. Datos inmutables}
-%   \framesubtitle{Coincidencia de patrones}
-%   \begin{exampleblock}{Utilizando coincidencia de patrones}
-% \begin{lstlisting}[language=scala]
-% def fraccionInv(f:Fraccion):Fraccion = f match {
-%    case (a,b) => (b,a)
-% }
-% \end{lstlisting}
+%   \begin{exampleblock}{factorial}
+%     Según Wikipedia:
+%     \begin{quote}
+%       Se desea calcular $n!$ (el factorial de $n$, se define como
+%       el producto de todos los enteros positivos de $1$ a $n$).
+%       Se puede definir el problema de forma recurrente como $n(n-1)!$;
+%       como $(n-1)!$ es menor que $n$ podemos aplicar inducción por
+%       lo que disponemos del resultado. El caso base es $0!$ es $1$.
+%     \end{quote}
 %   \end{exampleblock}
 % \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{Unidad 3. Datos inmutables}
-%   \begin{exampleblock}{Ejercicio}
-%     Utilizando la definición de complejo dada anteriormente redefina la función,
-%     pero utilizando coincidencia de patrones con tuplas.
-% \begin{lstlisting}[language=scala]
-% def igualesC(a:Complejo,b:Complejo):Boolean = (a,b) match {
-%    ...
-% }
-% \end{lstlisting}
-%   \end{exampleblock}
-% \end{frame}
-
-% \subsection{Tipos algebraicos}
-% \label{sec:valores-inmutables}
 
 % \begin{frame}
-%   \frametitle{Unidad 3. Datos inmutables}
-%   \framesubtitle{Tipos algebraicos}
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
+% \end{frame}
+
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
+
+%   \begin{exampleblock}{Implementación de factorial}
+%     La siguiente es la implementación de la función factorial
+%     es scala.
+% \begin{lstlisting}[language=scala]
+% def factorial(v: Int):Int = v match {
+% case 0 => 1
+% case 1 => 1
+% case n => n * factorial(n-1)
+% }
+% \end{lstlisting}
+%   \end{exampleblock}
   
-%   \begin{block}{Definición}
-%     Los tipos de datos son conjuntos y se pueden definir nuevos
-%     conjuntos a partir de operaciones de conjuntos. Los operadores más
-%     importantes para construir nuevos tipos son la unión (enumeración)
-%     y el producto cartesiano.
-%     \\
-%     Los tipos de datos algebraicos nos permite utilizar definiciones
-%     simbólicas basadas en los anteriores operadores para definir
-%     nuevos tipos de datos.
-%   \end{block}
-% \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{Unidad 3. Datos inmutables}
-%   \framesubtitle{Tipos algebraicos}
-
-%   \begin{exampleblock}{Definición de los días de la semana}
-% \begin{lstlisting}[language=scala]
-% sealed trait DiaSemana
-% case object Domingo extends DiaSemana
-% case object Lunes extends DiaSemana
-% case object Martes extends DiaSemana
-% case object Miercoles extends DiaSemana
-% case object Jueves extends DiaSemana
-% case object Viernes extends DiaSemana
-% case object Sabado extends DiaSemana
-% \end{lstlisting}
-%   \end{exampleblock}
-% \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{Unidad 3. Datos inmutables}
-%   \begin{exampleblock}{Ejercicio}
-%     Definir la función \texttt{esFinSemana}
-% \begin{lstlisting}[language=scala]
-% def esFinSemana(d:DiaSemana):Boolean = ???
-% \end{lstlisting}
-%   \end{exampleblock}
-% \end{frame}
-
-
-% \begin{frame}
-%   \frametitle{Unidad 3. Datos inmutables}
-%   \framesubtitle{Tipos algebraicos}
-
-%   \begin{exampleblock}{Definición de sucesor}
-%     Los valores númericos se pueden definir de una forma
-%     matemática:
-
-%     \[
-%       Numero = \begin{cases}
-%         0 & \\
-%         Succ(Numero) &  \\
-%       \end{cases}
-%     \]
-%   \end{exampleblock}
-% \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{Unidad 3. Datos inmutables}
-%   \framesubtitle{Tipos algebraicos}
-
-%   \begin{block}{Definición de un valor algebraico}
-% \begin{lstlisting}[language=Scala]
-% sealed trait Number
-% case object Zero extends Number
-% case class Succ(x:Number) extends Number
-% \end{lstlisting}    
-%   \end{block}
-% \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{Unidad 3. Datos inmutables}
-%   \framesubtitle{Tipos algebraicos}
-
-%   \begin{exampleblock}{Definición}
-% \begin{lstlisting}[language=Scala]
-% def isZero(x:Number):Boolean = x match {
-% case Zero => true
-% case _    => false
-% }
-% \end{lstlisting}    
-%   \end{exampleblock}
 % \end{frame}
 
 % \begin{frame}
-%   \frametitle{Unidad 3. Datos inmutables}
-%   \framesubtitle{Tipos algebraicos}
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
 
 %   \begin{enumerate}
-%   \item Defina una función (\texttt{sum}) se sume dos números.
-%   \item Defina una función (\texttt{mult}) que multiplique dos
-%     números.
+%   \item<1-> Una función recursiva tiene siempre un caso base. ¿Cuál es el caso base?
+%   \item<2-> ¿Cuál es el paso recursivo?
+%   \item<3-> ¿Es necesario tener dos casos base?
+%   \item<4-> ¿Si eliminamos el caso base con $1$ el código resultante sería más efectivo?
+    
+%   \item<5-> ¿Si dejamos el caso base $1$ y eliminamos el caso base $0$ el anterior programa esta correcto?
 %   \end{enumerate}
-
 % \end{frame}
+
+% \begin{frame}
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
+
+%   \begin{exampleblock}{Máximo común divisor}
+%     Según Wikipedia:
+%     \begin{quote}
+%       En las matemáticas, se define el máximo común divisor (abreviado) MCD de dos o más \emph{números enteros} al mayor
+%       número entero que los divide sin dejar residuo alguno
+%       (sin que sobre algún número).
+%     \end{quote}
+%   \end{exampleblock}
+% \end{frame}
+
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
+
+%   \begin{exampleblock}{Máximo común divisor}
+%     Se puede utilizar la definición de algoritmo de Euclides, que tiene
+%     varias definiciones.
+%     \[
+%       \text{mcd}(a,b) = \begin{cases}
+%         a & \text{Si} b = 0 \\
+%         \text{mcd}(b,a\ \text{mod}\ b) & \text{De otra forma} \\
+%       \end{cases}
+%     \]
+%     Implemente el siguiente código:
+% \begin{lstlisting}[language=scala]
+% def mcd(a:Int, b:Int):Int = ???
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
+
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
+%   \begin{exampleblock}{Implementación de \texttt{mcd}}
+% \begin{lstlisting}[language=scala]
+% def mcd(a:Int, b:Int):Int = b match {
+% case 0 => a
+% case _ => mcd(b, a % b)
+% }
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
+
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
+
+%   \begin{exampleblock}{Potencia de un número}
+%     Una definición interesante el cálculo de la potencia $x^y$ de
+%     forma recursiva:
+% \begin{lstlisting}[language=scala]
+% def potAux(x:Int, t:Int, a:Int):Int = t match {
+%   case 0 => 1
+%   case 1 => a
+%   case _ => potAux(x,t-1,a*x)
+% }
+
+% def pot(x:Int, y:Int):Int = {  
+%   potAux(x,y,x)
+% }
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
+%   \begin{enumerate}
+%   \item<1-> ¿Cuál es el caso base?
+%   \item<2-> ¿Cuál es el caso recursivo?
+%   \item<3-> ¿Qué significa la variable $a$ en la función \texttt{potAux}.
+%   \item<4-> ¿Qué significa la variable $t$ en la función \texttt{potAux}.
+%   \item<5-> ¿Por qué es necesario utilizar la función \texttt{potAux}?
+%   \end{enumerate}
+% \end{frame}
+
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
+
+%   \begin{exampleblock}{Multiplicar}
+%     Una de las grandes demostraciones de la matemáticas provienen
+%     del matemática Leibniz de la definición de la calculadora mecánica, qué según Wikipedia:
+%     \begin{quote}
+%       ``Una \textbf{calculadora mecánica} fue un objeto o sistema
+%       de cómputo y cálculo que basa su funcionamiento en un principio mecánico para devolver los resultados de una operación aritmética''.
+%       \\
+%     \end{quote}
+%     Implemente utilizando únicamente sumas la operación aritmética
+%     \texttt{mult}
+% \begin{lstlisting}[language=scala]
+% def mult(x:Int, y:Int):Int = ???
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
+
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 4. Datos inmutables, recursividad}
+%   \framesubtitle{Recursividad}
+
+%   \begin{exampleblock}{Solución multiplicar}
+% \begin{lstlisting}[language=scala]
+% def multAux(x:Int, t:Int, a:Int):Int = t match {
+%   case 1 => a
+%   case _ => multAux(x,t-1,a+x)
+% }
+
+% def mult(x:Int, y:Int):Int = {  
+%      multAux(x,y,x)
+% }
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
+
+% % \begin{frame}
+% %   \frametitle{Unidad 4. Datos inmutables, recursividad}
+% %   \framesubtitle{Tipos algebraicos}
+
+% %   \begin{exampleblock}{Definición de sucesor}
+% %     Los valores númericos se pueden definir de una forma
+% %     matemática:
+
+% %     \[
+% %       Numero = \begin{cases}
+% %         0 & \\
+% %         Succ(Numero) &  \\
+% %       \end{cases}
+% %     \]e
+% %   \end{exampleblock}
+% % \end{frame}
+
+% % \begin{frame}[fragile]
+% %   \frametitle{Unidad 4. Datos inmutables, recursividad}
+% %   \framesubtitle{Tipos algebraicos}
+
+% %   \begin{block}{Definición de un valor algebraico}
+% % \begin{lstlisting}[language=Scala]
+% % sealed trait Number
+% % case object Zero extends Number
+% % case class Succ(x:Number) extends Number
+% % \end{lstlisting}    
+% %   \end{block}
+% % \end{frame}
+
+% % \begin{frame}[fragile]
+% %   \frametitle{Unidad 4. Datos inmutables, recursividad}
+% %   \framesubtitle{Tipos algebraicos}
+
+% %   \begin{exampleblock}{Definición}
+% % \begin{lstlisting}[language=Scala]
+% % def isZero(x:Number):Boolean = x match {
+% % case Zero => true
+% % case _    => false
+% % }
+% % \end{lstlisting}    
+% %   \end{exampleblock}
+% % \end{frame}
+
+% % \begin{frame}
+% %   \frametitle{Unidad 4. Datos inmutables, recursividad}
+% %   \framesubtitle{Tipos algebraicos}
+
+% %   \begin{enumerate}
+% %   \item Defina una función (\texttt{sum}) se sume dos números.
+% %   \item Defina una función (\texttt{mult}) que multiplique dos
+% %     números.
+% %   \end{enumerate}
+
+% % \end{frame}
 
 \end{document}
 
