@@ -1,6 +1,7 @@
 \documentclass[handout]{beamer}
 
 \usetheme{default}
+\usecolortheme{beaver}
 
 \usepackage[latin1]{inputenc}
 \usepackage[spanish]{babel}
@@ -47,7 +48,7 @@
 }
 
 
-\title{Programación Funcional con Scala\\Unidad 1. ¿Qué es la programación funcional?}
+\title{Introducción a la Programación Funcional con Haskell(Scala)\\Unidad 1. ¿Qué es la programación funcional?}
 \date{25 de Septiembre de 2020}
 \author{S4N Campus\\Juan Francisco Cardona M}
 \institute{Seven4N}
@@ -77,6 +78,7 @@
   \begin{itemize}
   \item<1-> Definir qué es la programación funcional.
     \begin{itemize}
+    \item<2-> Mostrar los objetivos de los lenguajes de programación.
     \item<2-> Definir el concepto de paradigma de programación y los diferentes tipos.
     \item<3-> Definir los conceptos relevantes de la programación funcional.
     \end{itemize}
@@ -100,29 +102,41 @@
 \begin{frame}
   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Introducción}
-  
-\end{frame}
-
-\subsection{Lenguajes de programación e ingeniería de software}
-
-\begin{frame}
-  \frametitle{Lenguajes de programación e ingeniería de software}
-  \begin{itemize}[<+->]
-  \item Los lenguajes de programación son utilizados en
-    varias fases en el proceso de desarrollo (implementación y 
-    diseño).
-  \item Existen varios métodos de diseño: 
+  \begin{block}{Definición de los lenguajes de programación}
     \begin{itemize}
-    \item Diseño \emph{top-down}.
-    \item Diseño funcional.
-    \item Diseño orientado a objetos.
+    \item<1-> No hay una definición formal.
+    \item<2-> Pero si hay una forma de estructurar la definición de un
+      lenguaje de programación.
+      \begin{itemize}
+      \item<3-> Gramática,
+      \item<4-> Semántica,
+      \item<5-> Pragmática.
+      \end{itemize}
+    \item<6-> Cómo hacer programas en un lenguaje de programación: \alert{Paradigmas de programación}.
     \end{itemize}
-  \item Si el método de diseño no es compatible con el lenguaje de
-    programación, el esfuerzo de programación se incrementa.
-  \item El estilo del lenguaje de programación debe ser reflejado en
-    diseño del software de aplicación.
-  \end{itemize}
+  \end{block}
 \end{frame}
+
+% \subsection{Lenguajes de programación e ingeniería de software}
+
+% \begin{frame}
+%   \frametitle{Lenguajes de programación e ingeniería de software}
+%   \begin{itemize}[<+->]
+%   \item Los lenguajes de programación son utilizados en
+%     varias fases en el proceso de desarrollo (implementación y 
+%     diseño).
+%   \item Existen varios métodos de diseño: 
+%     \begin{itemize}
+%     \item Diseño \emph{top-down}.
+%     \item Diseño funcional.
+%     \item Diseño orientado a objetos.
+%     \end{itemize}
+%   \item Si el método de diseño no es compatible con el lenguaje de
+%     programación, el esfuerzo de programación se incrementa.
+%   \item El estilo del lenguaje de programación debe ser reflejado en
+%     diseño del software de aplicación.
+%   \end{itemize}
+% \end{frame}
 
 \subsection{Paradigmas de programación}
 
@@ -147,10 +161,8 @@
   \item Los lenguajes de programación son clasificados de
     acuerdo al paradigma que ellos soportan:
     \begin{itemize}
-    \item Lenguajes imperativos.
-    \item Lenguajes funcionales.
-    \item Lenguajes orientados a objetos.
-    \item Lenguajes lógicos.
+    \item Imperativo.
+    \item Declarativo.
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -181,6 +193,29 @@
   \end{itemize}
 \end{frame}
 
+\subsubsection{Lenguajes orientados a objeto}
+
+\begin{frame}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Paradigmas de programación - Lenguajes orientados a objeto}
+
+  \begin{itemize}[<+->]
+  \item Los programas son colecciones de objetos los cuales pueden ser
+    accedidos únicamente a través de operaciones (o métodos)
+    suministrados por ellos, y están usualmente organizados en
+    jerarquías.
+  \item Un objeto puede ser visto como una entidad que combina datos
+    (campos) y operaciones (métodos).
+  \item En la metodología de diseño orientada a objetos, el diseñador
+    produce una descripción jerarquica de la estructura de un sistema,
+    el cual es la base para la implementación en un lenguaje orientado
+    a objeto.
+  \item La orientación a objeto es considerada una característica de los
+    lenguajes imperativos, sin embargo también puede ser encontrada 
+    en lenguajes funcionales y combinada con lenguajes lógicos.
+  \end{itemize}
+\end{frame}
+
 \subsubsection{Lenguajes funcionales}
 
 \begin{frame}
@@ -203,29 +238,6 @@
     \item Clean
     \item Scala
     \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\subsubsection{Lenguajes orientados a objeto}
-
-\begin{frame}
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Paradigmas de programación - Lenguajes orientados a objeto}
-
-  \begin{itemize}[<+->]
-  \item Los programas son colecciones de objetos los cuales pueden ser
-    accedidos únicamente a través de operaciones (o métodos)
-    suministrados por ellos, y están usualmente organizados en
-    jerarquías.
-  \item Un objeto puede ser visto como una entidad que combina datos
-    (campos) y operaciones (métodos).
-  \item En la metodología de diseño orientada a objetos, el diseñador
-    produce una descripción jerarquica de la estructura de un sistema,
-    el cual es la base para la implementación en un lenguaje orientado
-    a objeto.
-  \item La orientación a objeto es considerada una característica de los
-    lenguajes imperativos, sin embargo también puede ser encontrada 
-    en lenguajes funcionales y combinada con lenguajes lógicos.
   \end{itemize}
 \end{frame}
 
@@ -310,63 +322,62 @@
 %   \end{itemize}
 % \end{frame}
 
-\subsection{Origenes históricos}
+% \subsection{Origenes históricos de la programación funcional}
 
-\begin{frame}
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Origenes históricos}
+% \begin{frame}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Origenes históricos}
 
-  \begin{itemize}[<+->]
-  \item Los lenguajes funcionales e imperativos crecieron del trabajo por 
-    matemáticos como: Alan Turing, Alonzo Church, Stephen Kleene, Emil Post y
-    otros en los años 30.
-  \item Trabajando independientemente desarrollaron:
-    \begin{itemize}
-    \item La noción de formalización de algoritmo (o \emph{procedimiento efectivo})
-    \item Manipulación símbolica
-    \item Funciones recursivas
-    \item Combinatorias.
-    \end{itemize}
-  \item Todas esas formalizaciones fueron mostradas que tenían la misma potencia.
-  \end{itemize}
-\end{frame}
+%   \begin{itemize}[<+->]
+%   \item Los lenguajes funcionales e imperativos crecieron del trabajo por 
+%     matemáticos como: Alan Turing, Alonzo Church, Stephen Kleene, Emil Post y
+%     otros en los años 30.
+%   \item Trabajando independientemente desarrollaron:
+%     \begin{itemize}
+%     \item La noción de formalización de algoritmo (o \emph{procedimiento efectivo})
+%     \item Manipulación símbolica
+%     \item Funciones recursivas
+%     \item Combinatorias.
+%     \end{itemize}
+%   \item Todas esas formalizaciones fueron mostradas que tenían la misma potencia.
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Origenes históricos}
-  \begin{itemize}[<+->]
-  \item El anterior resultado conduce a Church a conjeturar:
-    \begin{quote}
-      $\dots$
-      qué \emph{cuálquier} modelo de computación atractivo debe ser
-      igualmente poderoso también.
-    \end{quote}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Origenes históricos}
+%   \begin{itemize}[<+->]
+%   \item El anterior resultado conduce a Church a conjeturar:
+%     \begin{quote}
+%       $\dots$
+%       qué \emph{cuálquier} modelo de computación atractivo debe ser
+%       igualmente poderoso también.
+%     \end{quote}
+%   \end{itemize}
+% \end{frame}
 
-
-\begin{frame}
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Origenes históricos}
-  \begin{itemize}[<+->]
-  \item El modelo de computación de Turing es la \emph{máquina de
-      Turing}.
-  \item La máquina de Turing es una autómata que recuerda los
-    autómatas de estado finito, pero con la habilidad de acceder
-    celdas.
-  \item El modelo de Church de computación es llamado \emph{cálculo
-      lambda}.
-  \item Este es basado en la noción de expresiones parametrizadas (con
-    cada parámetro introduccido por la ocurrencia de la letra
-    $\lambda$).
-  \item El cálculo lambda fue la inspiración para la programación funcional:
-    por medio de la sustitución de paramétros dentro de las expresiones, como
-    cuando se computa en un lenguaje de alto-nivel.
-  \item Los modelos de computación de Kleene y Post son más
-    abstractos, y no llevan ellos mismos a la implementación como un
-    lenguaje de programación.
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Origenes históricos}
+%   \begin{itemize}[<+->]
+%   \item El modelo de computación de Turing es la \emph{máquina de
+%       Turing}.
+%   \item La máquina de Turing es una autómata que recuerda los
+%     autómatas de estado finito, pero con la habilidad de acceder
+%     celdas.
+%   \item El modelo de Church de computación es llamado \emph{cálculo
+%       lambda}.
+%   \item Este es basado en la noción de expresiones parametrizadas (con
+%     cada parámetro introduccido por la ocurrencia de la letra
+%     $\lambda$).
+%   \item El cálculo lambda fue la inspiración para la programación funcional:
+%     por medio de la sustitución de paramétros dentro de las expresiones, como
+%     cuando se computa en un lenguaje de alto-nivel.
+%   \item Los modelos de computación de Kleene y Post son más
+%     abstractos, y no llevan ellos mismos a la implementación como un
+%     lenguaje de programación.
+%   \end{itemize}
+% \end{frame}
 
 % \begin{frame}
 %   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
@@ -412,6 +423,7 @@
     funcionales suministran un número de características que se
     omiten frecuentemente en los lenguajes imperativos:
     \begin{itemize}
+    \item<3-> Está basado en el modelo de cálculo lambda.
     \item<3-> Valores de funciones de primera clase y funciones de alto-orden.
     \item<3-> Polimorfismo extensivo.
     \item<3-> Tipos de listas y operadores.
@@ -421,6 +433,26 @@
     \end{itemize}
   \end{itemize}
 \end{frame}
+
+\subsubsection{Cálculo lambda}
+
+\begin{frame}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Conceptos de programación funcional}
+  \begin{block}{Cálculo lambda}
+    \begin{itemize}
+    \item<1-> Es un modelo para:
+      \begin{itemize}
+      \item<2-> Definir funciones matemáticas,
+      \item<3-> Aplicar dichas funciones.
+      \end{itemize}
+    \item<4-> \alert{Tesis Turing-Church}
+    \item<5-> Se tiene un modelo válido para definir la programación.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\subsubsection{Valores de funciones de primera-clase y funciones de alto-orden}
 
 \begin{frame}
   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
@@ -441,6 +473,8 @@
   \end{block}
 \end{frame}
 
+\subsubsection{Polimorfimos extensivo}
+
 \begin{frame}
   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Conceptos de programación funcional}
@@ -457,11 +491,13 @@
   \end{block}
 \end{frame}
 
+\subsubsection{Tipo listas}
+
 \begin{frame}
   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Conceptos de programación funcional}
 
-  \begin{block}{Tipos listas y operadores}
+  \begin{block}{Tipos listas}
     \begin{itemize}[<+->]
     \item Listas son definidas de manera recursiva.
     \item Listas son manipuladas a través de un mecanismo 
@@ -474,6 +510,8 @@
     \end{itemize}
   \end{block}
 \end{frame}
+
+\subsubsection{Constructores (agregados) para objetos estructurados}
 
 \begin{frame}
   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
@@ -490,6 +528,8 @@
     \end{itemize}
   \end{block}
 \end{frame}
+
+\subsubsection{Recolectores de basura}
 
 \begin{frame}
   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
@@ -520,9 +560,6 @@
   \end{enumerate}
 \end{frame}
 
-\subsection{¿Qué es la programación funcional?}
-\label{sec:que-es-la-programacion-fp}
-
 \begin{frame}
   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{¿Qué es la programación funcional?}
@@ -533,179 +570,179 @@
   \end{quote}
 \end{frame}
 
-\subsection{¿Qué es una función pura?}
-\label{sec:que-es-una-funcion-pura}
+% \subsection{¿Qué es una función pura?}
+% \label{sec:que-es-una-funcion-pura}
 
-\begin{frame}
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{¿Qué es una función pura?}
+% \begin{frame}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{¿Qué es una función pura?}
 
-  \begin{itemize}
-  \item<1-> La salida de una función pura depende únicamente de sus valores de entrada y su algoritmo interno.
-  \item<2-> Una función pura no tiene efectos colaterales.
-  \end{itemize}
-\end{frame}
+%   \begin{itemize}
+%   \item<1-> La salida de una función pura depende únicamente de sus valores de entrada y su algoritmo interno.
+%   \item<2-> Una función pura no tiene efectos colaterales.
+%   \end{itemize}
+% \end{frame}
 
-\subsection{¿Qué son valores inmutables?}
-\label{sec:valores-inmutables}
-
-\begin{frame}
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{¿Qué son valores inmutables?}
-
-  \begin{itemize}
-  \item<1-> En los lenguajes imperativos los valores pueden cambiar.
-  \item<2-> En los lenguajes declarativos los valores no pueden cambiar.
-  \item<3-> Los valores se transforma, a partir de un valor se crea un valor nuevo.
-  \end{itemize}
-  
-\end{frame}
-
-\subsection{Scala como un lenguaje funcional}
-\label{sec:scala}
-
-\begin{frame}
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Scala como un lenguaje funcional}
-
-  \begin{itemize}
-  \item<1-> Scala es un lenguaje de propósito general,
-  \item<2-> que soporta la programación orientada a objetos,
-  \item<3-> que soporta la programación funcional.
-  \item<4-> Con un sistema de tipos fuertemente tipeado.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Scala como un lenguaje funcional}
-
-  \begin{itemize}
-  \item<1-> Vamos a utilizar la parte funcional de Scala.
-  \item<2-> Nos permite un acercamiento más puro a la programación funcional.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Scala como un lenguaje funcional}
-
-  \begin{itemize}
-  \item<1-> En \href{https://sdkman.io/}{sdkman} es una herramienta que permite manejar varios ambientes de desarrollo basados en Java.
-    \begin{enumerate}
-    \item<2-> Instale \href{https://sdkman.io/}{sdkman}
-\begin{alltt}
-\$ curl -s "https://get.sdkman.io" | bash
-\end{alltt}
-    \item<3-> Ahora instale Scala
-\begin{alltt}
-\$ sdk install scala
-\end{alltt}
-\item<4-> Ahora instale sbt
-\begin{alltt}
-\$ sdk install sbt
-\end{alltt}
-   \end{enumerate}
-  \end{itemize}
-\end{frame}
-
-\subsection{Definición de funciones}
-\label{sec:def-funciones}
-
-\begin{frame}[fragile]
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Definición de funciones}
-   \begin{itemize}
-   \item<1-> Scala nos permite definir valores inmutables \texttt{val}
-% \begin{lstlisting}[language=Haskell]
-% f (x,y) = (x, ['a' .. y])
-% \end{lstlisting}
-\begin{lstlisting}[language=Scala]
-val diez = 10
-\end{lstlisting}
-\item<2-> Scala nos permite definir funciones. Definamos una
-  función que calcule el mínimo de dos valores enteros.
-\begin{lstlisting}[language=Scala]
-def minimo(x:Int, y:Int):Int = if (x<=y) x else y
-\end{lstlisting}
-   \end{itemize}
- \end{frame}
-
-
- \begin{frame}
-  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-  \framesubtitle{Definición de funciones}
-
-  \begin{exampleblock}{Definición de signo}
-    Defina una función \texttt{signo} que evalue la siguiente definición:
-    \[
-      signo(x) = \begin{cases}
-        x < 0 & -1 \\
-        x = 0 & 0 \\
-        x > 0 & 1 \\
-        \end{cases}
-    \]
-  \end{exampleblock}
-\end{frame}
-
-% \subsection{Definición de tipos algebraicos}
+% \subsection{¿Qué son valores inmutables?}
 % \label{sec:valores-inmutables}
 
 % \begin{frame}
 %   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-%   \framesubtitle{Definición de tipos algebraicos}
+%   \framesubtitle{¿Qué son valores inmutables?}
 
-%   \begin{exampleblock}{Definición de sucesor}
-%     Los valores númericos se pueden definir de una forma
-%     matemática:
+%   \begin{itemize}
+%   \item<1-> En los lenguajes imperativos los valores pueden cambiar.
+%   \item<2-> En los lenguajes declarativos los valores no pueden cambiar.
+%   \item<3-> Los valores se transforma, a partir de un valor se crea un valor nuevo.
+%   \end{itemize}
+  
+% \end{frame}
 
+% \subsection{Scala como un lenguaje funcional}
+% \label{sec:scala}
+
+% \begin{frame}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Scala como un lenguaje funcional}
+
+%   \begin{itemize}
+%   \item<1-> Scala es un lenguaje de propósito general,
+%   \item<2-> que soporta la programación orientada a objetos,
+%   \item<3-> que soporta la programación funcional.
+%   \item<4-> Con un sistema de tipos fuertemente tipeado.
+%   \end{itemize}
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Scala como un lenguaje funcional}
+
+%   \begin{itemize}
+%   \item<1-> Vamos a utilizar la parte funcional de Scala.
+%   \item<2-> Nos permite un acercamiento más puro a la programación funcional.
+%   \end{itemize}
+% \end{frame}
+
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Scala como un lenguaje funcional}
+
+%   \begin{itemize}
+%   \item<1-> En \href{https://sdkman.io/}{sdkman} es una herramienta que permite manejar varios ambientes de desarrollo basados en Java.
+%     \begin{enumerate}
+%     \item<2-> Instale \href{https://sdkman.io/}{sdkman}
+% \begin{alltt}
+% \$ curl -s "https://get.sdkman.io" | bash
+% \end{alltt}
+%     \item<3-> Ahora instale Scala
+% \begin{alltt}
+% \$ sdk install scala
+% \end{alltt}
+% \item<4-> Ahora instale sbt
+% \begin{alltt}
+% \$ sdk install sbt
+% \end{alltt}
+%    \end{enumerate}
+%   \end{itemize}
+% \end{frame}
+
+% \subsection{Definición de funciones}
+% \label{sec:def-funciones}
+
+% \begin{frame}[fragile]
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Definición de funciones}
+%    \begin{itemize}
+%    \item<1-> Scala nos permite definir valores inmutables \texttt{val}
+% % \begin{lstlisting}[language=Haskell]
+% % f (x,y) = (x, ['a' .. y])
+% % \end{lstlisting}
+% \begin{lstlisting}[language=Scala]
+% val diez = 10
+% \end{lstlisting}
+% \item<2-> Scala nos permite definir funciones. Definamos una
+%   función que calcule el mínimo de dos valores enteros.
+% \begin{lstlisting}[language=Scala]
+% def minimo(x:Int, y:Int):Int = if (x<=y) x else y
+% \end{lstlisting}
+%    \end{itemize}
+%  \end{frame}
+
+
+%  \begin{frame}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+%   \framesubtitle{Definición de funciones}
+
+%   \begin{exampleblock}{Definición de signo}
+%     Defina una función \texttt{signo} que evalue la siguiente definición:
 %     \[
-%       Numero = \begin{cases}
-%         0 & \\
-%         Succ(Numero) &  \\
+%       signo(x) = \begin{cases}
+%         x < 0 & -1 \\
+%         x = 0 & 0 \\
+%         x > 0 & 1 \\
 %         \end{cases}
 %     \]
 %   \end{exampleblock}
 % \end{frame}
 
-% \begin{frame}[fragile]
-%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-%   \framesubtitle{Definición de tipos algebraicos}
+% % \subsection{Definición de tipos algebraicos}
+% % \label{sec:valores-inmutables}
 
-%   \begin{block}{Definición de un valor algebraico}
-% \begin{lstlisting}[language=Scala]
-% sealed trait Number
-% case object Zero extends Number
-% case class Succ(x:Number) extends Number
-% \end{lstlisting}    
-%   \end{block}
-% \end{frame}
+% % \begin{frame}
+% %   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+% %   \framesubtitle{Definición de tipos algebraicos}
 
-% \begin{frame}[fragile]
-%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-%   \framesubtitle{Definición de tipos algebraicos}
+% %   \begin{exampleblock}{Definición de sucesor}
+% %     Los valores númericos se pueden definir de una forma
+% %     matemática:
 
-%   \begin{exampleblock}{Definición}
-% \begin{lstlisting}[language=Scala]
-% def isZero(x:Number):Boolean = x match {
-%   case Zero => true
-%   case _    => false
-% }
-% \end{lstlisting}    
-%   \end{exampleblock}
-% \end{frame}
+% %     \[
+% %       Numero = \begin{cases}
+% %         0 & \\
+% %         Succ(Numero) &  \\
+% %         \end{cases}
+% %     \]
+% %   \end{exampleblock}
+% % \end{frame}
 
-% \begin{frame}
-%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
-%   \framesubtitle{Definición de tipos algebraicos}
+% % \begin{frame}[fragile]
+% %   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+% %   \framesubtitle{Definición de tipos algebraicos}
 
-%   \begin{enumerate}
-%   \item Defina una función (\texttt{sum}) se sume dos números.
-%   \item Defina una función (\texttt{mult}) que multiplique dos
-%     números.
-%   \end{enumerate}
+% %   \begin{block}{Definición de un valor algebraico}
+% % \begin{lstlisting}[language=Scala]
+% % sealed trait Number
+% % case object Zero extends Number
+% % case class Succ(x:Number) extends Number
+% % \end{lstlisting}    
+% %   \end{block}
+% % \end{frame}
+
+% % \begin{frame}[fragile]
+% %   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+% %   \framesubtitle{Definición de tipos algebraicos}
+
+% %   \begin{exampleblock}{Definición}
+% % \begin{lstlisting}[language=Scala]
+% % def isZero(x:Number):Boolean = x match {
+% %   case Zero => true
+% %   case _    => false
+% % }
+% % \end{lstlisting}    
+% %   \end{exampleblock}
+% % \end{frame}
+
+% % \begin{frame}
+% %   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+% %   \framesubtitle{Definición de tipos algebraicos}
+
+% %   \begin{enumerate}
+% %   \item Defina una función (\texttt{sum}) se sume dos números.
+% %   \item Defina una función (\texttt{mult}) que multiplique dos
+% %     números.
+% %   \end{enumerate}
   
-% \end{frame}
+% % \end{frame}
 \end{document}
 
 %%% Local Variables:

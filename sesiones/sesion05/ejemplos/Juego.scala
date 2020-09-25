@@ -7,5 +7,16 @@ case object Oeste extends Direccion
 
 type Jugador = (String,Direccion)
 
-def girarIzq(jugador:Jugador):Jugador = ???
-def girarDer(jugador:Jugador):Jugador = ???
+def girarIzq(jugador:Jugador):Jugador = jugador match {
+  case (n,Norte) => (n,Oeste)
+  case (n,Este)  => (n,Norte)
+  case (n,Sur)   => (n,Este)
+  case (n,Oeste) => (n,Sur)
+}
+
+def girarDer(jugador:Jugador):Jugador = jugador match {
+  case (n,Norte) => (n,Este)
+  case (n,Este)  => (n,Sur)
+  case (n,Sur)   => (n,Oeste)
+  case (n,Oeste) => (n,Norte)
+}
