@@ -164,22 +164,23 @@ case 1 => 1
 case n => n * factorial(n-1)
 }
 \end{lstlisting}
-  \end{exampleblock}
+%  \end{exampleblock}
   
-\end{frame}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Unidad 5. Recursividad}
-  \framesubtitle{Recursividad}
+% \begin{frame}
+%   \frametitle{Unidad 5. Recursividad}
+%   \framesubtitle{Recursividad}
 
-  \begin{enumerate}
-  \item<1-> Una función recursiva tiene siempre un caso base. ¿Cuál es el caso base?
-  \item<2-> ¿Cuál es el paso recursivo?
-  \item<3-> ¿Es necesario tener dos casos base?
-  \item<4-> ¿Si eliminamos el caso base con $1$ el código resultante sería más efectivo?
-    
-  \item<5-> ¿Si dejamos el caso base $1$ y eliminamos el caso base $0$ el anterior programa esta correcto?
-  \end{enumerate}
+    \vspace{-5ex}
+    \begin{enumerate}
+    \item<2-> Una función recursiva tiene siempre un caso base. ¿Cuál es el caso base?
+    \item<3-> ¿Cuál es el paso recursivo?
+    \item<4-> ¿Es necesario tener dos casos base?
+    \item<5-> ¿Si eliminamos el caso base con $1$ el código resultante sería más efectivo?
+    \item<6-> ¿Si dejamos el caso base $1$ y eliminamos el caso base $0$ el anterior programa esta correcto?
+    \end{enumerate}
+  \end{exampleblock}
 \end{frame}
 
 \begin{frame}
@@ -236,30 +237,31 @@ case _ => mcd(b, a % b)
   \begin{exampleblock}{Potencia de un número}
     Una definición interesante el cálculo de la potencia $x^y$ de
     forma recursiva:
-\begin{lstlisting}[language=scala]
+\begin{lstlisting}<1->[language=scala]
 def potAux(x:Int, t:Int, a:Int):Int = t match {
   case 0 => 1
   case 1 => a
   case _ => potAux(x,t-1,a*x)
 }
-
 def pot(x:Int, y:Int):Int = {  
   potAux(x,y,x)
 }
 \end{lstlisting}
-  \end{exampleblock}
-\end{frame}
 
-\begin{frame}
-  \frametitle{Unidad 5. Recursividad}
-  \framesubtitle{Recursividad}
-  \begin{enumerate}
-  \item<1-> ¿Cuál es el caso base?
-  \item<2-> ¿Cuál es el caso recursivo?
-  \item<3-> ¿Qué significa la variable $a$ en la función \texttt{potAux}.
-  \item<4-> ¿Qué significa la variable $t$ en la función \texttt{potAux}.
-  \item<5-> ¿Por qué es necesario utilizar la función \texttt{potAux}?
-  \end{enumerate}
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Unidad 5. Recursividad}
+%   \framesubtitle{Recursividad}
+    \vspace{-5ex}
+    \begin{enumerate}
+    \item<2-> ¿Cuál es el caso base?
+    \item<3-> ¿Cuál es el caso recursivo?
+    \item<4-> ¿Qué significa la variable $a$ en la función \texttt{potAux}?
+    \item<5-> ¿Qué significa la variable $t$ en la función \texttt{potAux}?
+    \item<6-> ¿Por qué es necesario utilizar la función \texttt{potAux}?
+    \end{enumerate}
+  \end{exampleblock}
 \end{frame}
 
 \begin{frame}[fragile]
