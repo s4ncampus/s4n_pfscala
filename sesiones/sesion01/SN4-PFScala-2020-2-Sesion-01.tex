@@ -47,10 +47,10 @@
 }
 
 
-\title{Programación Funcional con Scala\\Sesion 1}
-\date{11 de Septiembre de 2020}
-\author{Juan Cardona}
-\institute{S4N}
+\title{Programación Funcional con Scala\\Unidad 1. ¿Qué es la programación funcional?}
+\date{25 de Septiembre de 2020}
+\author{S4N Campus\\Juan Francisco Cardona M}
+\institute{Seven4N}
 
 \begin{document}
 
@@ -66,34 +66,44 @@
 % Programming Languages and Operational Semantics. A Concise Overview
 % Chapter 01.
 
-\section{Módulo 1. ¿Qué es la programación funcional?}
+\section{Unidad 1. ¿Qué es la programación funcional?}
+
+\subsection{Objetivos}
+
+\begin{frame}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Objetivos}
+  
+  \begin{itemize}
+  \item<1-> Definir qué es la programación funcional.
+    \begin{itemize}
+    \item<2-> Definir el concepto de paradigma de programación y los diferentes tipos.
+    \item<3-> Definir los conceptos relevantes de la programación funcional.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
 \subsection{Introducción}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Introducción}
-  \begin{itemize}
-  \item Lenguajes de programación son herramientas para escribir programas.
-  \item Lenguajes de programación permite comunicarnos con el computador.
-  \end{itemize}
+  \begin{block}{Objetivos de los lenguajes de programación}
+    \begin{itemize}
+    \item<1-> Son herramientas para escribir programas.
+    \item<2-> Nos permite comunicarnos con el computador físico y decirle que hacer.
+    \item<3-> Nos permite comunicarnos con otros programadores.
+    \end{itemize}
+  \end{block}
 \end{frame}
 
-% \begin{frame}
-%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
-%   \frametitle{}
-%   \begin{itemize}[<+->]
-%   \item Unidad 1. Paradigmas de programación
-%     \begin{itemize}
-%     \item Lenguajes de programación e Ingeniería de Software
-%     \item Paradigmas de programación
-%     \item Componentes de un lenguaje de programación
-%     \end{itemize}
-%   \end{itemize}
-% \end{frame}
+\begin{frame}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
+  \framesubtitle{Introducción}
+  
+\end{frame}
 
 \subsection{Lenguajes de programación e ingeniería de software}
-
 
 \begin{frame}
   \frametitle{Lenguajes de programación e ingeniería de software}
@@ -117,7 +127,7 @@
 \subsection{Paradigmas de programación}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Paradigmas de programación}
   \begin{itemize}[<+->]
   \item Un lenguaje de programación induce:
@@ -131,7 +141,7 @@
 
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Paradigmas de programación}
   \begin{itemize}[<+->]
   \item Los lenguajes de programación son clasificados de
@@ -148,7 +158,7 @@
 \subsubsection{Lenguajes imperativos}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Paradigmas de programación - Lenguajes imperativos}
   \begin{itemize}
   \item<1-> Los programas son descompuestos dentro
@@ -174,7 +184,7 @@
 \subsubsection{Lenguajes funcionales}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Paradigmas de programación - Lenguajes funcionales}
   \begin{itemize}
   \item<1-> Programas son funciones, las cuales pueden ser
@@ -199,7 +209,7 @@
 \subsubsection{Lenguajes orientados a objeto}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Paradigmas de programación - Lenguajes orientados a objeto}
 
   \begin{itemize}[<+->]
@@ -222,7 +232,7 @@
 \subsubsection{Lenguajes lógicos}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Paradigmas de programación - Lenguajes lógicos}
 
   \begin{itemize}
@@ -303,7 +313,7 @@
 \subsection{Origenes históricos}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Origenes históricos}
 
   \begin{itemize}[<+->]
@@ -322,7 +332,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Origenes históricos}
   \begin{itemize}[<+->]
   \item El anterior resultado conduce a Church a conjeturar:
@@ -336,7 +346,7 @@
 
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Origenes históricos}
   \begin{itemize}[<+->]
   \item El modelo de computación de Turing es la \emph{máquina de
@@ -359,7 +369,7 @@
 \end{frame}
 
 % \begin{frame}
-%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
 %   \framesubtitle{Origenes históricos}
 %   \begin{itemize}[<+->]
 %   \item El objetivo de cada trabajo de computabilidad no fue entender
@@ -377,7 +387,7 @@
 % \end{frame}
 
 % \begin{frame}
-%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
 %   \framesubtitle{Origenes históricos}
 
 %   \begin{quote}
@@ -391,7 +401,7 @@
 \subsection{Conceptos de programación funcional}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Conceptos de programación funcional}
 
   \begin{itemize}
@@ -413,7 +423,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Conceptos de programación funcional}
   \begin{block}{Valores de funciones de primera-clase y funciones de alto-orden}
     \begin{itemize}[<+->]
@@ -432,7 +442,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Conceptos de programación funcional}
 
   \begin{block}{Polimorfismo extensivo}
@@ -448,7 +458,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Conceptos de programación funcional}
 
   \begin{block}{Tipos listas y operadores}
@@ -466,7 +476,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Conceptos de programación funcional}
 
   \begin{block}{Constructores (agregados) para objetos estructurados}
@@ -482,7 +492,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Conceptos de programación funcional}
 
   \begin{block}{Recolectores de basura}
@@ -501,7 +511,7 @@
 \label{sec:que-es-la-programacion-fp}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{¿Qué es la programación funcional?}
 
   \begin{enumerate}
@@ -514,7 +524,7 @@
 \label{sec:que-es-la-programacion-fp}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{¿Qué es la programación funcional?}
 
   \begin{quote}
@@ -527,7 +537,7 @@
 \label{sec:que-es-una-funcion-pura}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{¿Qué es una función pura?}
 
   \begin{itemize}
@@ -540,7 +550,7 @@
 \label{sec:valores-inmutables}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{¿Qué son valores inmutables?}
 
   \begin{itemize}
@@ -555,7 +565,7 @@
 \label{sec:scala}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Scala como un lenguaje funcional}
 
   \begin{itemize}
@@ -567,7 +577,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Scala como un lenguaje funcional}
 
   \begin{itemize}
@@ -577,7 +587,7 @@
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Scala como un lenguaje funcional}
 
   \begin{itemize}
@@ -603,7 +613,7 @@
 \label{sec:def-funciones}
 
 \begin{frame}[fragile]
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Definición de funciones}
    \begin{itemize}
    \item<1-> Scala nos permite definir valores inmutables \texttt{val}
@@ -623,7 +633,7 @@ def minimo(x:Int, y:Int):Int = if (x<=y) x else y
 
 
  \begin{frame}
-  \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+  \frametitle{Unidad 1. ¿Qué es la programación funcional?}
   \framesubtitle{Definición de funciones}
 
   \begin{exampleblock}{Definición de signo}
@@ -642,7 +652,7 @@ def minimo(x:Int, y:Int):Int = if (x<=y) x else y
 % \label{sec:valores-inmutables}
 
 % \begin{frame}
-%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
 %   \framesubtitle{Definición de tipos algebraicos}
 
 %   \begin{exampleblock}{Definición de sucesor}
@@ -659,7 +669,7 @@ def minimo(x:Int, y:Int):Int = if (x<=y) x else y
 % \end{frame}
 
 % \begin{frame}[fragile]
-%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
 %   \framesubtitle{Definición de tipos algebraicos}
 
 %   \begin{block}{Definición de un valor algebraico}
@@ -672,7 +682,7 @@ def minimo(x:Int, y:Int):Int = if (x<=y) x else y
 % \end{frame}
 
 % \begin{frame}[fragile]
-%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
 %   \framesubtitle{Definición de tipos algebraicos}
 
 %   \begin{exampleblock}{Definición}
@@ -686,7 +696,7 @@ def minimo(x:Int, y:Int):Int = if (x<=y) x else y
 % \end{frame}
 
 % \begin{frame}
-%   \frametitle{Módulo 1. ¿Qué es la programación funcional?}
+%   \frametitle{Unidad 1. ¿Qué es la programación funcional?}
 %   \framesubtitle{Definición de tipos algebraicos}
 
 %   \begin{enumerate}
