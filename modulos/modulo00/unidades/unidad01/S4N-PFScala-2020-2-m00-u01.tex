@@ -12,6 +12,7 @@
 \usepackage{url}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{multicol}
 \usepackage{alltt}
 \usepackage[ruled,vlined]{algorithm2e}
 
@@ -109,41 +110,78 @@
     funcional}
   \framesubtitle{Modelo de computador y lenguajes de programación}
 
+  \begin{multicols*}{3}
+    \pause
+    \includegraphics[width=2.2cm,height=5cm]{../../../../imagenes/ModeloComputador}
+    \pause
+    \includegraphics[width=2.2cm,height=5cm]{../../../../imagenes/ModeloComputadorC++}
+    \pause
+    \includegraphics[width=2.5cm,height=6cm]{../../../../imagenes/ModeloComputadorRealC++Dilema}
+  \end{multicols*}
   
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unidad 1. Paradigmas de programación y programación
+    funcional}
+  \framesubtitle{Modelo de computador y lenguajes de programación}
+
+  \begin{multicols}{2}
+    \pause
+    \includegraphics[width=5cm,height=6cm]{../../../../imagenes/ModeloComputadorRealC++Compilado}
+    \pause
+    \includegraphics[width=5cm,height=6cm]{../../../../imagenes/ModeloComputadorRealC++Interpretado}
+  \end{multicols}
   
 \end{frame}
 
 
-% \subsection{Paradigmas de programación}
+\subsection{Paradigmas de programación}
 
-% \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
-%   \framesubtitle{Paradigmas de programación}
-%   \begin{itemize}[<+->]
-%   \item Un lenguaje de programación induce:
-%     \begin{itemize}
-%     \item un estilo particular de programación,
-%     \item un conjunto particular de métodos y técnicas para razonar sobre los programas. 
-%     \end{itemize}
-%   \item Lo anterior es llamado paradigma de programación.
-%   \end{itemize}
-% \end{frame}
+\begin{frame}
+  \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+  \framesubtitle{Paradigmas de programación}
+  \begin{itemize}[<+->]
+  \item Un lenguaje de programación induce:
+    \begin{itemize}
+    \item un estilo particular de programación,
+    \item un conjunto particular de métodos y técnicas para razonar sobre los programas. 
+    \end{itemize}
+  \item \alert{Paradigma de programación}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+  \framesubtitle{Paradigmas de programación}
+  \begin{itemize}[<+->]
+  \item Los lenguajes de programación son clasificados de
+    acuerdo al paradigma que ellos soportan:
+    \begin{itemize}
+    \item<1-> Imperativo \alert<3->{(¿Cómo?)}
+    \item<2-> Declarativo \alert<4->{(¿Qué?)}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsubsection{Lenguajes imperativos}
+
+\begin{frame}
+  \frametitle{Unidad 1. Paradigmas de programación y programación
+    funcional}
+  \framesubtitle{Paradigmas de programación - Lenguajes imperativos}
+  \begin{itemize}
+  \item<1-> El modelo es computación es el computador físico.
+  \item<2-> Se consulta y se modifica variables en memoria.
+  \item<3-> Se ejecuta una instrucción tras otra.
+  \item<4-> Los ciclos y condiciones cambian la secuencia de ejecución.
+  \item<5-> Las funciones y procedimientos son formas de valores e instrucciones.
+  \item<6-> Los datos son agrupados en registros o estructuras.
+  \item<7-> Los módulos agrupan datos y procedimientos de forma lógica.
+  \end{itemize}
+\end{frame}
 
 
-% \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
-%   \framesubtitle{Paradigmas de programación}
-%   \begin{itemize}[<+->]
-%   \item Los lenguajes de programación son clasificados de
-%     acuerdo al paradigma que ellos soportan:
-%     \begin{itemize}
-%     \item Imperativo.
-%     \item Declarativo.
-%     \end{itemize}
-%   \end{itemize}
-% \end{frame}
-
-% \subsubsection{Lenguajes imperativos}
 
 % \begin{frame}
 %   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
@@ -192,6 +230,27 @@
 %   \end{itemize}
 % \end{frame}
 
+\subsubsection{Lenguajes declarativos}
+
+
+\begin{frame}
+  \frametitle{Unidad 1. Paradigmas de programación y programación
+    funcional}
+  \framesubtitle{Paradigmas de programación - Lenguajes imperativos}
+
+  \begin{itemize}
+  \item<1-> Su modelo de computación no es el computador físico.
+  \item<2-> El concepto de variables es matemático.
+  \item<3-> Un programa es una expresión.
+  \item<4-> Un programa es un conjunto de hechos e inferencia sobre ellos.
+  \item<5-> Los datos y los programas son equivalentes.
+  \item<6-> Dos alternativas:
+    \begin{itemize}
+    \item<7-> Programación funcional.
+    \item<8-> Programación lógica.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 % \subsubsection{Lenguajes funcionales}
 
 % \begin{frame}
@@ -256,7 +315,7 @@
 %       editores, depuradores).
 %     \end{enumerate}
 %   \end{itemize}
-% \end{frame}
+% \end{frase}
 
 % \subsubsection{Arquitectura del computador}
 
