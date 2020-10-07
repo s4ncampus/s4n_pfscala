@@ -7,4 +7,6 @@
 *.out
 *.snm
 *.vrb
+*.bbl
+*.blg
 auto/

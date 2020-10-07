@@ -49,8 +49,8 @@
 }
 
 
-\title{Introducción a la Programación Funcional\\Módulo 0\\Unidad 1. Paradigmas de programación y programación funcional}
-\date{2 de Octubre de 2020}
+\title{Introducción a la Programación Funcional\\Módulo 0\\Unidad 1. Lenguajes, paradigmas y programación funcional}
+\date{6 de Octubre de 2020}
 \author{S4N Campus\\Juan Francisco Cardona M}
 \institute{Seven4N}
 
@@ -68,37 +68,54 @@
 % Programming Languages and Operational Semantics. A Concise Overview
 % Chapter 01.
 
-\section{Módulo 0.\\Unidad 1. Paradigmas de programación y programación funcional}
+\section{Módulo 0.\\Unidad 1. Lenguajes, paradigmas y programación funcional}
 
 \subsection{Objetivos}
 
 \begin{frame}
-  \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+  \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
   \framesubtitle{Objetivos}
 
   Al finalizar esta unidad:
   \begin{itemize}
-  \item<1-> Comprenderás que son los lenguajes de programación
-  \item<2-> Identificarás cuáles son los paradigmas de programación
-  \item<3-> Identificarás que son los lenguajes funcionales
+  \item<1-> Definirás qué son los lenguajes de programación
+  \item<2-> Identificarás cuáles son los modelos de computador
+  \item<4-> Identificarás cuáles son los paradigmas de programación (en alto nivel)
   \end{itemize}
 \end{frame}
 
 \subsection{¿Qué son los lenguajes de programación?}
 
 \begin{frame}
-  \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+  \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
   \framesubtitle{¿Qué son los lenguajes de programación?}
   \begin{block}{Definición de los lenguajes de programación}
     \begin{itemize}
-    \item<2-> No hay una definición formal de un lenguaje de programación
-    \item<3-> Entonces: \alert{¿Qué lo define?}
+    \item<2-> No hay una definición formal
+    \item<3-> Un posible acercamiento:
       \begin{itemize}
-      \item<4-> Gramática,
-      \item<4-> Semántica,
-      \item<4-> Pragmática.
+      \item<4-> Permiten indicarle de forma no ambigua cómo deben
+        \emph{computar} y \emph{transformar} los datos el computador
+      \item<5-> Comunicar con el computador y los programadores
       \end{itemize}
-    \item<5-> La forma de razonar de cómo escribir un programa: \alert{Modelo de computador} y \alert{Paradigmas de programación}.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
+  \framesubtitle{¿Qué son los lenguajes de programación?}
+  \begin{block}{Definición de los lenguajes de programación}
+    \begin{itemize}
+    \item<2-> Entonces: \alert{¿Qué lo define?}
+      \begin{itemize}
+      \item<3-> Gramática,
+      \item<3-> Semántica,
+      \item<3-> Pragmática.
+      \end{itemize}
+    \item<4-> La forma de razonar de cómo escribir un programa:
+      \alert{Modelo de computador} y \alert{Paradigmas de
+        programación}.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -118,7 +135,7 @@
     \pause
     \includegraphics[width=2.5cm,height=6cm]{../../../../imagenes/ModeloComputadorRealC++Dilema}
   \end{multicols*}
-  
+
 \end{frame}
 
 \begin{frame}
@@ -132,27 +149,26 @@
     \pause
     \includegraphics[width=5cm,height=6cm]{../../../../imagenes/ModeloComputadorRealC++Interpretado}
   \end{multicols}
-  
-\end{frame}
 
+\end{frame}
 
 \subsection{Paradigmas de programación}
 
 \begin{frame}
-  \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+  \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
   \framesubtitle{Paradigmas de programación}
   \begin{itemize}[<+->]
   \item Un lenguaje de programación induce:
     \begin{itemize}
     \item un estilo particular de programación,
-    \item un conjunto particular de métodos y técnicas para razonar sobre los programas. 
+    \item un conjunto particular de métodos y técnicas para razonar sobre los programas.
     \end{itemize}
   \item \alert{Paradigma de programación}.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+  \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
   \framesubtitle{Paradigmas de programación}
   \begin{itemize}[<+->]
   \item Los lenguajes de programación son clasificados de
@@ -171,20 +187,19 @@
     funcional}
   \framesubtitle{Paradigmas de programación - Lenguajes imperativos}
   \begin{itemize}
-  \item<1-> El modelo es computación es el computador físico.
-  \item<2-> Se consulta y se modifica variables en memoria.
-  \item<3-> Se ejecuta una instrucción tras otra.
-  \item<4-> Los ciclos y condiciones cambian la secuencia de ejecución.
-  \item<5-> Las funciones y procedimientos son formas de valores e instrucciones.
-  \item<6-> Los datos son agrupados en registros o estructuras.
-  \item<7-> Los módulos agrupan datos y procedimientos de forma lógica.
+  \item<1-> El modelo es el computador físico
+  \item<2-> Se consulta y modifica variables en memoria
+  \item<3-> Se ejecuta una instrucción tras otra
+  \item<4-> Los ciclos y condiciones cambian la secuencia de ejecución
+  \item<5-> Las funciones y procedimientos son formas de valores e instrucciones
+  \item<6-> Los datos son agrupados en registros o estructuras
+  \item<7-> Los módulos agrupan datos y procedimientos de forma lógica
   \end{itemize}
 \end{frame}
 
 
-
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Paradigmas de programación - Lenguajes imperativos}
 %   \begin{itemize}
 %   \item<1-> Los programas son descompuestos dentro
@@ -210,7 +225,7 @@
 % \subsubsection{Lenguajes orientados a objeto}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Paradigmas de programación - Lenguajes orientados a objeto}
 
 %   \begin{itemize}[<+->]
@@ -225,7 +240,7 @@
 %     el cual es la base para la implementación en un lenguaje orientado
 %     a objeto.
 %   \item La orientación a objeto es considerada una característica de los
-%     lenguajes imperativos, sin embargo también puede ser encontrada 
+%     lenguajes imperativos, sin embargo también puede ser encontrada
 %     en lenguajes funcionales y combinada con lenguajes lógicos.
 %   \end{itemize}
 % \end{frame}
@@ -239,26 +254,71 @@
   \framesubtitle{Paradigmas de programación - Lenguajes imperativos}
 
   \begin{itemize}
-  \item<1-> Su modelo de computación no es el computador físico.
-  \item<2-> El concepto de variables es matemático.
-  \item<3-> Un programa es una expresión.
-  \item<4-> Un programa es un conjunto de hechos e inferencia sobre ellos.
-  \item<5-> Los datos y los programas son equivalentes.
-  \item<6-> Dos alternativas:
+  \item<1-> Su modelo de computación son modelos matemáticos
+  \item<2-> La variable se liga a un valor, no a una posición de memoria
+  \item<3-> Un programa es:
     \begin{itemize}
-    \item<7-> Programación funcional.
-    \item<8-> Programación lógica.
+    \item<4-> una expresión, o
+    \item<5-> un conjunto de hechos o reglas que relacionan hechos
+    \end{itemize}
+  \item<5-> No hay diferencia entre programas y datos
+  \item<6-> Dos subgrupos:
+    \begin{itemize}
+    \item<7-> Programación funcional
+    \item<8-> Programación lógica
     \end{itemize}
   \end{itemize}
 \end{frame}
-% \subsubsection{Lenguajes funcionales}
 
+\subsubsection{¿Qué es la programación funcional?}
+
+\begin{frame}
+  \frametitle{Unidad 1. Paradigmas de programación y programación
+    funcional}
+  \framesubtitle{¿Qué es la programación funcional?}
+
+  \begin{quote}
+    Según (\cite{turtle-2020}): ``La programación funcional es el acto
+    de escribir programas con \emph{funciones puras}. Las funciones
+    puras tiene tres propiedades:
+    \begin{itemize}
+    \item<2-> \textbf{Total:} retorna un valor por cada posible entrada
+    \item<3-> \textbf{Determinista:} retorna el mismo valor por la misma entrada
+    \item<4-> \textbf{Inculpable:} no iteración (\emph{directa}) con el mundo o el estado del programa''
+    \end{itemize}
+  \end{quote}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unidad 1. Paradigmas de programación y programación
+    funcional}
+  \framesubtitle{¿Qué es la programación funcional?}
+
+  \begin{quote}
+    Según (\cite{chisano-2015}): ``La programación funcional (PF) está
+    basada en la simple premisa con implicaciones de largo alcance:
+    nosotros construimos los programas utilizando únicamente \emph{funciones puras}, en otras palabras,
+    funciones que no tiene \emph{efectos colaterales}''
+  \end{quote}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Unidad 1. Paradigmas de programación y programación
+    funcional}
+  \begin{block}{¿Qué significa sin efectos colaterales?}
+    \begin{itemize}
+    \item<1-> Datos inmutables
+    \item<2-> Sin operaciones de entrada y salida
+    \item<3-> Sin rompimientos de control (Sin excepciones)
+    \end{itemize}
+  \end{block}
+\end{frame}
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Paradigmas de programación - Lenguajes funcionales}
 %   \begin{itemize}
 %   \item<1-> Programas son funciones, las cuales pueden ser
-%     compuestas para construir nuevas funciones como 
+%     compuestas para construir nuevas funciones como
 %     en la teoría de funciones.
 %   \item<2-> Esta clase de lenguajes son llamados también declarativos,
 %     desde que su enfoque es \emph{qué} debe computado y no \emph{cómo}
@@ -279,7 +339,7 @@
 % \subsubsection{Lenguajes lógicos}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Paradigmas de programación - Lenguajes lógicos}
 
 %   \begin{itemize}[<+->]
@@ -311,7 +371,7 @@
 %       programas. Este describe la forma que los programas se comportan
 %       cuando son ejecutados.
 %     \item \textbf{\emph{Implementación}}: un sistema de software puede
-%       leer un programa y ejecutarlo en un computador. (Compiladores, 
+%       leer un programa y ejecutarlo en un computador. (Compiladores,
 %       editores, depuradores).
 %     \end{enumerate}
 %   \end{itemize}
@@ -331,7 +391,7 @@
 %     \item Perifericos
 %     \item Sistema de ficheros
 %     \end{itemize}
-%   \item El conjunto de instrucciones para aritmetica y operaciones 
+%   \item El conjunto de instrucciones para aritmetica y operaciones
 %     son usualmente llamadas \emph{lenguaje de máquina}.
 %   \item El sistema operativos suministra primitivas de alto nivel.
 %   \item Implementaciones de lenguajes son construidos encima de los OS.
@@ -360,11 +420,11 @@
 % \subsection{Origenes históricos de la programación funcional}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Origenes históricos}
 
 %   \begin{itemize}[<+->]
-%   \item Los lenguajes funcionales e imperativos crecieron del trabajo por 
+%   \item Los lenguajes funcionales e imperativos crecieron del trabajo por
 %     matemáticos como: Alan Turing, Alonzo Church, Stephen Kleene, Emil Post y
 %     otros en los años 30.
 %   \item Trabajando independientemente desarrollaron:
@@ -379,7 +439,7 @@
 % \end{frame}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Origenes históricos}
 %   \begin{itemize}[<+->]
 %   \item El anterior resultado conduce a Church a conjeturar:
@@ -392,7 +452,7 @@
 % \end{frame}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Origenes históricos}
 %   \begin{itemize}[<+->]
 %   \item El modelo de computación de Turing es la \emph{máquina de
@@ -415,7 +475,7 @@
 % \end{frame}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Origenes históricos}
 %   \begin{itemize}[<+->]
 %   \item El objetivo de cada trabajo de computabilidad no fue entender
@@ -433,7 +493,7 @@
 % \end{frame}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Origenes históricos}
 
 %   \begin{quote}
@@ -447,7 +507,7 @@
 % \subsection{Conceptos de programación funcional}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Conceptos de programación funcional}
 
 %   \begin{itemize}
@@ -472,7 +532,7 @@
 % \subsubsection{Cálculo lambda}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Conceptos de programación funcional}
 %   \begin{block}{Cálculo lambda}
 %     \begin{itemize}
@@ -490,7 +550,7 @@
 % \subsubsection{Valores de funciones de primera-clase y funciones de alto-orden}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Conceptos de programación funcional}
 %   \begin{block}{Valores de funciones de primera-clase y funciones de alto-orden}
 %     \begin{itemize}[<+->]
@@ -511,16 +571,16 @@
 % \subsubsection{Polimorfimos extensivo}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Conceptos de programación funcional}
 
 %   \begin{block}{Polimorfismo extensivo}
 %     \begin{itemize}[<+->]
-%     \item Polimorfismo permite que una función pueda ser utilizada como 
+%     \item Polimorfismo permite que una función pueda ser utilizada como
 %       una clase general de argumento como sea posible.
 %     \item El polimorfismo puede ser dinámico (LISP) o estático (ML,
 %       Haskell).
-%     \item Algunos lenguajes utilizan polimorfismo a través de la 
+%     \item Algunos lenguajes utilizan polimorfismo a través de la
 %       inferencia de tipos (ML, Haskell).
 %     \end{itemize}
 %   \end{block}
@@ -529,14 +589,14 @@
 % \subsubsection{Tipo listas}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Conceptos de programación funcional}
 
 %   \begin{block}{Tipos listas}
 %     \begin{itemize}[<+->]
 %     \item Listas son definidas de manera recursiva.
-%     \item Listas son manipuladas a través de un mecanismo 
-%       de coincidencia de patrones: el inicio de la lista y el resto 
+%     \item Listas son manipuladas a través de un mecanismo
+%       de coincidencia de patrones: el inicio de la lista y el resto
 %       de la lista.
 %     \item La recursión es el único mecanismo que permite hacer
 %       o construir cosas repetidamente.
@@ -549,7 +609,7 @@
 % \subsubsection{Constructores (agregados) para objetos estructurados}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Conceptos de programación funcional}
 
 %   \begin{block}{Constructores (agregados) para objetos estructurados}
@@ -558,7 +618,7 @@
 %       de datos compuestos (arreglos, estructuras, listas).
 %     \item Los literales compuestos son llamados agregados.
 %     \item Un lenguaje funcional puro debe suminitrar agregados
-%       generales: debido a que no hay forma de actualizarlos 
+%       generales: debido a que no hay forma de actualizarlos
 %       deben ser inicializados de una.
 %     \end{itemize}
 %   \end{block}
@@ -567,7 +627,7 @@
 % \subsubsection{Recolectores de basura}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Conceptos de programación funcional}
 
 %   \begin{block}{Recolectores de basura}
@@ -586,7 +646,7 @@
 % \label{sec:que-es-la-programacion-fp}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{¿Qué es la programación funcional?}
 
 %   \begin{enumerate}
@@ -596,7 +656,7 @@
 % \end{frame}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{¿Qué es la programación funcional?}
 
 %   \begin{quote}
@@ -609,7 +669,7 @@
 % \label{sec:que-es-una-funcion-pura}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{¿Qué es una función pura?}
 
 %   \begin{itemize}
@@ -622,7 +682,7 @@
 % \label{sec:valores-inmutables}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{¿Qué son valores inmutables?}
 
 %   \begin{itemize}
@@ -630,14 +690,14 @@
 %   \item<2-> En los lenguajes declarativos los valores no pueden cambiar.
 %   \item<3-> Los valores se transforma, a partir de un valor se crea un valor nuevo.
 %   \end{itemize}
-  
+
 % \end{frame}
 
 % \subsection{Scala como un lenguaje funcional}
 % \label{sec:scala}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Scala como un lenguaje funcional}
 
 %   \begin{itemize}
@@ -649,7 +709,7 @@
 % \end{frame}
 
 % \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Scala como un lenguaje funcional}
 
 %   \begin{itemize}
@@ -659,7 +719,7 @@
 % \end{frame}
 
 % \begin{frame}[fragile]
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Scala como un lenguaje funcional}
 
 %   \begin{itemize}
@@ -685,7 +745,7 @@
 % \label{sec:def-funciones}
 
 % \begin{frame}[fragile]
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Definición de funciones}
 %    \begin{itemize}
 %    \item<1-> Scala nos permite definir valores inmutables \texttt{val}
@@ -705,7 +765,7 @@
 
 
 %  \begin{frame}
-%   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+%   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 %   \framesubtitle{Definición de funciones}
 
 %   \begin{exampleblock}{Definición de signo}
@@ -724,7 +784,7 @@
 % % \label{sec:valores-inmutables}
 
 % % \begin{frame}
-% %   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+% %   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 % %   \framesubtitle{Definición de tipos algebraicos}
 
 % %   \begin{exampleblock}{Definición de sucesor}
@@ -741,7 +801,7 @@
 % % \end{frame}
 
 % % \begin{frame}[fragile]
-% %   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+% %   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 % %   \framesubtitle{Definición de tipos algebraicos}
 
 % %   \begin{block}{Definición de un valor algebraico}
@@ -749,12 +809,12 @@
 % % sealed trait Number
 % % case object Zero extends Number
 % % case class Succ(x:Number) extends Number
-% % \end{lstlisting}    
+% % \end{lstlisting}
 % %   \end{block}
 % % \end{frame}
 
 % % \begin{frame}[fragile]
-% %   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+% %   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 % %   \framesubtitle{Definición de tipos algebraicos}
 
 % %   \begin{exampleblock}{Definición}
@@ -763,12 +823,12 @@
 % %   case Zero => true
 % %   case _    => false
 % % }
-% % \end{lstlisting}    
+% % \end{lstlisting}
 % %   \end{exampleblock}
 % % \end{frame}
 
 % % \begin{frame}
-% %   \frametitle{Unidad 1. Paradigmas de programación y programación funcional}
+% %   \frametitle{Unidad 1. Lenguajes, paradigmas y programación funcional}
 % %   \framesubtitle{Definición de tipos algebraicos}
 
 % %   \begin{enumerate}
@@ -776,8 +836,20 @@
 % %   \item Defina una función (\texttt{mult}) que multiplique dos
 % %     números.
 % %   \end{enumerate}
-  
+
 % % \end{frame}
+
+\subsection{Bibliografía}
+
+\bibliographystyle{alpha}
+
+\begin{frame}
+  \frametitle{Unidad 1. Paradigmas de programación y programación
+    funcional}
+  \framesubtitle{Bibliografía}
+
+  \bibliography{S4N-PFScala-2020-2-m00-u01}
+\end{frame}
 \end{document}
 
 %%% Local Variables:
