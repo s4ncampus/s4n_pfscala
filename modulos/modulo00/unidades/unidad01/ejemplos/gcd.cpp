@@ -5,16 +5,17 @@ int gcd(int x, int y);
 int
 main(void) {
 
-  std::cout << "Enter dos valores enteros separados por espacios: "
-            << std::endl;
+  std::cout << "Enter three integer values separated by spaces: ";
+  std::cout.flush();
 
-  int a, b;
+  int a, b, c;
 
-  std::cin >> a >> b;
+  std::cin >> a >> b >> c;
 
-  std::cout << "Resultado: gcd(" << a << "," << b << ")="
-            << gcd(a,b) << std::endl;
-
+  std::cout << "The minimum size to cut is: "
+	    << gcd(gcd(a, b),c)
+	    << std::endl;
+  
   return 0;
 }
 
@@ -27,4 +28,4 @@ gcd(int x, int y) {
       y = y - x;
   return x;
 }
-c3
+
