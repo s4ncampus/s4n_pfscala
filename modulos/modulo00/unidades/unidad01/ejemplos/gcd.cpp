@@ -1,6 +1,6 @@
 #include <iostream>
 
-int gcd(int x, int y);
+int gcd(int a, int b);
 
 int
 main(void) {
@@ -15,17 +15,16 @@ main(void) {
   std::cout << "The minimum size to cut is: "
 	    << gcd(gcd(a, b),c)
 	    << std::endl;
-  
+
   return 0;
 }
 
 int
-gcd(int x, int y) {
-  while (x != y)
-    if (x > y)
-      x = x - y;
+gcd(int a, int b) {
+  while (a != b)
+    if (a > b)
+      a = a - b;
     else
-      y = y - x;
-  return x;
+      b = b - a;
+  return a;
 }
-

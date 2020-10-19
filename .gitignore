@@ -1,4 +1,5 @@
 *.*~
+*~
 *.pdf
 *.toc
 *.log
@@ -10,3 +11,5 @@
 *.bbl
 *.blg
 auto/
+*.o
+*.hi
