@@ -9,7 +9,7 @@ main(Argv) :-
 gcd(A,B,G) :- A = B, G = A.
 gcd(A,B,G) :- A < B, B1 is B - A, gcd(A, B1, G).
 gcd(A,B,G) :- A > B, gcd(B, A, G).
- 
+
 process :-
     current_input(Input),
     write("Enter three integer values separated by spaces: "),
@@ -24,4 +24,3 @@ process :-
     number_string(Result,ResultStr),
     write("The minimum size to cut is: "),
     write(ResultStr),nl.
-

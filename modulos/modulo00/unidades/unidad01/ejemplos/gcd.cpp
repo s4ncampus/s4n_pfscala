@@ -6,19 +6,17 @@ int
 main(void) {
 
 
-  for (;;) {
+  std::cout << "Enter three integer values separated by spaces: ";
+  std::cout.flush();
 
-    std::cout << "Enter three integer values separated by spaces: ";
-    std::cout.flush();
+  int a, b, c;
+  std::cin >> a >> b >> c;
 
-    int a, b, c;
-    std::cin >> a >> b >> c;
+  if (!std::cin) break;
+  std::cout << "The minimum size to cut is: "
+	    << gcd(gcd(a, b),c)
+	    << std::endl;
 
-    if (!std::cin) break;
-    std::cout << "The minimum size to cut is: "
-	      << gcd(gcd(a, b),c)
-	      << std::endl;
-  }
   return 0;
 }
 
